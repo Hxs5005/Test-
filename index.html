@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>露營裝備清單</title>
+<meta name="description" content="6 人・2 帳的露營裝備清單：登山路線看進度、出發體力固定在畫面上方，勾完一區就能到營火邊烤棉花糖。">
+<meta name="theme-color" content="#edbd55">
+
+<!-- 分享預覽（LINE、Facebook 等）。部署後建議把 og:image 改成完整網址，例如 https://你的帳號.github.io/camping-checklist/og-image.png -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="露營裝備清單">
+<meta property="og:description" content="出發倒數＋登山路線式的裝備清單：公共裝備、炊具、個人行李打勾，勾完一區就能烤棉花糖。">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M6 27 16 6l10 21Z' fill='%23edbd55' stroke='%2324324a' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M16 14l4.5 13h-9Z' fill='%23c98a12' stroke='%2324324a' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M14 23l-1.6-6.5M18 23l1.6-6.5' stroke='%2324324a' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M14 23l-1.6-6.5M18 23l1.6-6.5' stroke='%23e8796b' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='12.3' cy='16' r='2.4' fill='%2324324a'/%3E%3Ccircle cx='19.7' cy='16' r='2.4' fill='%2324324a'/%3E%3Cellipse cx='16' cy='25' rx='4.6' ry='3.6' fill='%23e8796b' stroke='%2324324a' stroke-width='1.5'/%3E%3Cpath d='M10.5 25C10 21 4.5 20.5 2.5 23.5l3.6 1.1-3.6 1.4c2 3.5 8 3.2 8-1Z' fill='%23e8796b' stroke='%2324324a' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-title" content="露營清單">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=LXGW+WenKai+TC:wght@400;700&display=swap">
+<style>
+/* ============ 露營手帳：樣式 ============ */
+:root{
+  --ink:#24324a;--ink2:#5b6577;--ink3:#8a93a3;
+  --paper:#fbf6ea;--card:#fffdf8;--kraft:#f6efe1;--dot:#d6c8ad;
+  --rule:#c4d4e5;--margin:#e3a19b;--w1:#edbd55;--w2:#f1c96c;
+  --stamp:#c8433a;--ok:#7cc58f;
+  --hand:'LXGW WenKai TC','Kaiti TC','BiauKai','DFKai-SB','STKaiti','KaiTi',serif;
+  --num:'Caveat','LXGW WenKai TC',cursive;
+  --sans:system-ui,-apple-system,BlinkMacSystemFont,'PingFang TC','Noto Sans TC','Microsoft JhengHei',sans-serif;
+  --hd-h:96px;--tb-h:62px;--sb:env(safe-area-inset-bottom,0px);
+  --sh:2px 3px 0 rgba(36,50,74,.14);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;min-height:100vh;background-color:var(--kraft);background-image:radial-gradient(var(--dot) 1.1px,transparent 1.4px);background-size:18px 18px;color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--stamp);outline-offset:2px}
+.noscript{max-width:560px;margin:40px auto;padding:16px;font-size:16px}
+.shell{width:100%;max-width:560px;margin:0 auto;padding:0 16px}
+main{padding-bottom:calc(var(--tb-h) + var(--sb) + 28px)}
+
+/* ---------- 上方：郵戳＋出發體力 ---------- */
+.hd{position:sticky;top:0;z-index:40;background:repeating-linear-gradient(-45deg,var(--w1) 0 10px,var(--w2) 10px 20px);border-bottom:1.5px solid var(--ink);box-shadow:0 4px 0 rgba(36,50,74,.08);padding-top:env(safe-area-inset-top,0px)}
+.hd-in{display:flex;align-items:center;gap:10px;max-width:560px;margin:0 auto;padding:8px 12px 7px 10px}
+.pm{flex:none;display:flex;flex-direction:column;align-items:center;justify-content:center;width:56px;height:56px;border:2.5px solid var(--stamp);border-radius:50%;background:var(--paper);color:var(--stamp);text-decoration:none;transform:rotate(-9deg);box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 4.5px rgba(200,67,58,.4)}
+.pm b{font-family:var(--num);font-size:23px;font-weight:700;line-height:.9;white-space:nowrap}
+.pm b.zh{font-family:var(--hand);font-size:14px;line-height:1.1}
+.pm small{font-size:9.5px;font-weight:700;letter-spacing:.5px;white-space:nowrap}
+.st{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.st-top{display:flex;align-items:baseline;gap:6px;min-width:0}
+.st-l{font-family:var(--hand);font-size:14.5px;font-weight:700;white-space:nowrap}
+.st-p{font-family:var(--num);font-size:21px;font-weight:700;line-height:1}
+.st-mini{margin-left:auto;display:flex;gap:9px;white-space:nowrap}
+.mini{font-size:12px;font-weight:700;text-decoration:none}
+.mini b{font-family:var(--num);font-size:17px;margin-left:2px}
+.mini.full b{color:#2f7a45}
+.bar{display:flex;height:16px;overflow:hidden;border:2px solid var(--ink);border-radius:255px 12px 225px 12px/12px 225px 12px 255px;background:var(--paper)}
+.bar i{display:block;flex:none;width:0;height:100%;background:var(--c);box-shadow:inset 1.5px 0 0 var(--ink);transition:width .5s ease}
+.bar i.ok{background:var(--ok);box-shadow:none}
+.chips{display:flex;gap:6px;margin:-4px -12px -4px 0;padding:4px 12px 4px 0;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);mask-image:linear-gradient(90deg,#000 86%,transparent)}
+.chips::-webkit-scrollbar{display:none}
+.chip{position:relative;flex:none;display:inline-flex;align-items:center;gap:5px;height:26px;padding:0 9px 0 6px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper);font-size:12px;font-weight:700;white-space:nowrap;cursor:pointer}
+.chip::after{content:"";position:absolute;inset:-4px -3px}
+.chip i{width:10px;height:10px;border:1.5px solid var(--ink);border-radius:3px;background:var(--c)}
+.chip b{font-family:var(--num);font-size:16px;line-height:1}
+.chip.ok{background:var(--ok);cursor:default}
+
+/* ---------- 下方分頁列 ---------- */
+.tb{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--paper);border-top:1.5px solid var(--ink);box-shadow:0 -4px 0 rgba(36,50,74,.06);padding-bottom:var(--sb)}
+.tb-in{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;max-width:560px;margin:0 auto;padding:6px 8px}
+.tb a{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;min-height:48px;border:1.5px solid transparent;border-radius:14px;font-family:var(--hand);font-size:13px;font-weight:700;color:var(--ink2);text-decoration:none}
+.tb a svg{width:24px;height:24px}
+.tb a[aria-current="page"]{color:var(--ink);border-color:var(--ink);background:repeating-linear-gradient(-45deg,var(--w1) 0 8px,var(--w2) 8px 16px)}
+.tb .dot{position:absolute;top:1px;left:calc(50% + 6px);min-width:19px;height:19px;padding:0 4px;border:1.5px solid var(--ink);border-radius:999px;background:var(--stamp);color:#fff;font-family:var(--num);font-size:15px;font-weight:700;line-height:15px;text-align:center}
+
+/* ---------- 共用 ---------- */
+.view{padding-top:16px;animation:viewIn .35s ease both}
+.eyebrow{margin:0;font-family:var(--num);font-size:16px;font-weight:700;letter-spacing:.4px;color:var(--ink2)}
+.sec-h{margin:20px 0 2px}
+.sec-h h2{margin:0;font-family:var(--hand);font-size:24px;line-height:1.25}
+.sec-h p{margin:2px 0 0;font-size:13px;color:var(--ink2)}
+.bub{position:absolute;z-index:8;width:max-content;max-width:200px;margin:0;padding:7px 11px;border:2px solid var(--ink);border-radius:14px;background:var(--card);box-shadow:var(--sh);font-family:var(--hand);font-size:14px;font-weight:700;line-height:1.38;color:var(--ink);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .28s cubic-bezier(.34,1.56,.64,1);transform:translateY(6px) scale(.9)}
+.bub.show{opacity:1;transform:none}
+.bub:empty{display:none}
+
+/* ---------- 寄居帳（吉祥物） ---------- */
+.pc{display:block;overflow:visible}
+.walker-in .pc,.pc-side .pc,.t-pc .pc,.share-pc .pc{width:100%;height:100%}
+.pc .pc-b{transform-box:fill-box;transform-origin:50% 100%;animation:pcBob 2.8s ease-in-out infinite}
+.pc .e-round{transform-box:fill-box;transform-origin:50% 50%;animation:blink 4.8s infinite}
+.pc .flag{transform-box:fill-box;transform-origin:0 50%;animation:sway 1.8s ease-in-out infinite}
+.pc .claw{transform-box:fill-box;transform-origin:100% 56%}
+.pc .legs{transform-box:fill-box;transform-origin:50% 0}
+.pc .e-happy,.pc .hide-g,.pc .spark{display:none}
+.pc.cheer .e-round,.pc.yay .e-round{display:none}
+.pc.cheer .e-happy,.pc.yay .e-happy,.pc.cheer .spark,.pc.yay .spark{display:inline}
+.pc.cheer .claw{animation:clawWave .45s ease-in-out infinite alternate}
+.pc.oops .out-g{display:none}
+.pc.oops .hide-g{display:inline}
+.pc.oops .pc-b,.pc.nervous .pc-b{animation:pcShake .16s linear infinite}
+.pc.hop-a .pc-b{animation:pcHopA .55s cubic-bezier(.3,1.4,.5,1)}
+.pc.hop-b .pc-b{animation:pcHopB .55s cubic-bezier(.3,1.4,.5,1)}
+.walking .pc .pc-b{animation:pcSide .3s ease-in-out infinite alternate}
+.walking .pc .legs{animation:legs .3s ease-in-out infinite alternate}
+
+/* ---------- 山路 ---------- */
+.cover{position:relative;margin:8px 0 0;padding:14px 16px 13px;border:1.5px solid var(--ink);border-radius:6px 6px 14px 14px;background:var(--card);box-shadow:3px 4px 0 rgba(36,50,74,.12);transform:rotate(-.6deg)}
+.cover::before{content:"";position:absolute;top:-11px;left:50%;width:96px;height:22px;margin-left:-48px;background:rgba(237,189,85,.82);border:1px solid rgba(36,50,74,.22);transform:rotate(-3deg)}
+.cover h1{margin:1px 0 0;font-family:var(--hand);font-size:29px;line-height:1.2}
+.cover .sub{margin:1px 0 9px;font-family:var(--hand);font-size:15px;color:var(--ink2)}
+.stks{display:flex;flex-wrap:wrap;gap:8px}
+.stk{display:inline-block;padding:2px 10px;border:1.5px solid var(--ink);border-radius:999px;background:var(--c);font-family:var(--hand);font-size:13px;font-weight:700}
+.stk:nth-child(1){--c:#9cc2a5;transform:rotate(-3deg)}
+.stk:nth-child(2){--c:#9cbfe0;transform:rotate(2deg)}
+.stk:nth-child(3){--c:#f0a29a;transform:rotate(-1.5deg)}
+.map-wrap{position:relative;height:440px;margin:18px 0 0}
+.map-t{position:absolute;left:2px;top:0;z-index:2;max-width:170px}
+.map-t h2{margin:0;font-family:var(--hand);font-size:24px;line-height:1.2}
+.map-t p{margin:1px 0 0;font-family:var(--hand);font-size:13px;font-weight:700;color:var(--ink2)}
+.map{position:absolute;left:0;top:0;width:342px;height:440px;transform-origin:0 0}
+.map-art{position:absolute;left:0;top:0;width:342px;height:440px;overflow:visible}
+.map-art .cl1{animation:drift 9s ease-in-out infinite}
+.map-art .cl2{animation:drift 12s ease-in-out -4s infinite}
+.map-art .sf{transform-box:fill-box;transform-origin:0 50%;animation:sway 2s ease-in-out infinite}
+.map-art .sum-flag{transition:opacity .5s ease 1.2s}
+.map.done .sum-flag{opacity:0}
+.tr-ok{transition:stroke-dashoffset 1.4s cubic-bezier(.45,.05,.35,1)}
+.node{position:absolute;z-index:2;width:0;height:0;color:var(--ink);text-decoration:none}
+.node .ring{position:absolute;left:-20px;top:-20px;display:flex;align-items:flex-end;justify-content:center;width:40px;height:40px;padding-bottom:6px;border:2px solid var(--ink);border-radius:50%;background:var(--card)}
+.node.lit .ring{background:#ffe9b0}
+.node.next .ring{box-shadow:0 0 0 4px rgba(200,67,58,.25);animation:ring 1.8s ease-in-out infinite}
+.node .tag{position:absolute;top:-13px;display:flex;align-items:center;gap:4px;height:26px;padding:0 9px;border:1.5px solid var(--ink);border-radius:4px;background:var(--c);box-shadow:2px 2px 0 rgba(36,50,74,.15);font-family:var(--hand);font-size:13px;font-weight:700;white-space:nowrap}
+.node.l .tag{right:26px;transform:rotate(-2deg)}
+.node.r .tag{left:26px;transform:rotate(2deg)}
+.fi-on,.fi-off{display:block}
+.lit .fi-off,.camp:not(.lit) .fi-on,.node:not(.lit) .fi-on{display:none}
+.fi-on .fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1s ease-in-out infinite alternate}
+.summit{position:absolute;left:198px;top:4px;z-index:3;display:flex;flex-direction:column;gap:2px;width:138px;padding:7px 9px 8px;border:1.5px solid var(--ink);border-radius:10px;background:var(--card);box-shadow:var(--sh)}
+.summit b{font-family:var(--hand);font-size:14.5px;line-height:1.3}
+.summit small{font-size:11.5px;line-height:1.4;color:var(--ink2)}
+.flare-btn{min-height:34px;margin-top:4px;border:1.5px solid var(--ink);border-radius:999px;background:var(--stamp);color:#fff;font-family:var(--hand);font-size:13px;font-weight:700;cursor:pointer}
+.walker{position:absolute;left:0;top:0;z-index:6;width:0;height:0;offset-path:path('M150 424C140 408 114 400 114 376C114 346 228 336 228 306C228 274 120 266 120 232C120 198 212 190 212 158C212 116 171 86 171 40');offset-rotate:0deg;offset-distance:0%;transition:offset-distance var(--wd,0s) cubic-bezier(.45,.05,.35,1),transform var(--wd,0s) cubic-bezier(.45,.05,.35,1)}
+.walker-in{position:absolute;left:-26px;bottom:-3px;width:52px;height:52px;padding:0;border:0;background:none;cursor:pointer;transform:translateX(var(--sx,0px));transition:transform var(--wd,0s) cubic-bezier(.45,.05,.35,1)}
+.walker .bub{bottom:56px;translate:var(--sx,0px) 0;transition:opacity .2s ease,transform .28s cubic-bezier(.34,1.56,.64,1),translate var(--wd,0s) cubic-bezier(.45,.05,.35,1)}
+.walker .bub.to-r{left:-14px;border-bottom-left-radius:4px}
+.walker .bub.to-l{right:-14px;border-bottom-right-radius:4px}
+.rocket{position:absolute;left:165px;top:6px;z-index:7;width:12px;height:12px;border-radius:50%;background:#ff5a3c;box-shadow:0 0 12px #ff5a3c,0 18px 14px -6px #ffb43b;animation:rise 1.6s ease-out forwards}
+.boom{position:absolute;left:126px;top:-102px;z-index:7;width:90px;height:90px;overflow:visible;animation:boom 1.6s ease-out forwards}
+.camps{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.camp{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:8px;row-gap:7px;height:100%;padding:10px 10px 10px 8px;border:1.5px solid var(--ink);border-radius:12px;background:var(--card);box-shadow:var(--sh);color:var(--ink);text-decoration:none}
+.camp .cf{grid-row:1/3;display:flex;align-items:flex-end;justify-content:center;width:40px;height:40px;padding-bottom:6px;border:2px solid var(--ink);border-radius:50%;background:var(--card)}
+.camp.lit .cf{background:#ffe9b0}
+.camp .cm{display:flex;flex-direction:column;min-width:0}
+.camp .cm b{font-family:var(--hand);font-size:15px;line-height:1.25}
+.camp .cm small{font-size:11.5px;color:var(--ink2)}
+.camp .cc{font-family:var(--num);font-size:19px;font-weight:700;line-height:1}
+.camp .cbar{grid-column:2/4;position:relative;height:7px;overflow:hidden;border-radius:99px;background:#eadfca}
+.camp .cbar i{position:absolute;left:0;top:0;bottom:0;width:calc(var(--v,0)*100%);border-radius:99px;background:var(--c);transition:width .5s ease}
+.sash{position:relative;margin:20px 0 4px;padding:14px 12px 12px;border:1.5px solid var(--ink);border-radius:12px;background:repeating-linear-gradient(135deg,#6f8f5a 0 14px,#7a9a64 14px 28px);box-shadow:3px 4px 0 rgba(36,50,74,.12);transform:rotate(-.8deg)}
+.sash h2{display:inline-block;margin:0 0 10px;padding:1px 10px;border:1.5px solid var(--ink);border-radius:6px;background:var(--card);font-family:var(--hand);font-size:15px}
+.badges{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.bdg{display:flex;flex-direction:column;align-items:center;gap:3px}
+.bdg span{display:flex;align-items:center;justify-content:center;width:44px;max-width:100%;aspect-ratio:1;border:2px solid var(--ink);border-radius:50%;background:#d9d2c2;box-shadow:inset 0 0 0 3px #d9d2c2,inset 0 0 0 5px #bfb6a3;color:#8b8373}
+.bdg.got span{background:var(--c);box-shadow:inset 0 0 0 3px var(--c),inset 0 0 0 5px var(--card);color:var(--ink)}
+.bdg.new span{animation:stampIn .6s cubic-bezier(.2,1.4,.4,1) both}
+.bdg svg{width:20px;height:20px}
+.bdg small{font-family:var(--hand);font-size:11.5px;font-weight:700;color:#fffdf8;white-space:nowrap}
+
+/* ---------- 清單（手帳內頁） ---------- */
+.book{display:grid;grid-template-columns:minmax(0,1fr) 52px;margin-right:-16px}
+.page{position:relative;min-height:580px;padding:16px 14px 28px 36px;border:1.5px solid var(--ink);border-radius:6px 0 0 6px;background-color:var(--paper);background-image:linear-gradient(90deg,transparent 22px,var(--margin) 22px,var(--margin) 23.5px,transparent 23.5px),repeating-linear-gradient(180deg,transparent 0,transparent 33px,var(--rule) 33px,var(--rule) 34px);box-shadow:-3px 4px 0 rgba(36,50,74,.1)}
+.flip{position:absolute;inset:-1.5px;z-index:9;border-radius:6px 0 0 6px;transform-origin:left center;background-color:var(--paper);background-image:linear-gradient(90deg,rgba(36,50,74,.08),transparent 30%,transparent 80%,rgba(36,50,74,.12)),repeating-linear-gradient(180deg,transparent 0,transparent 33px,var(--rule) 33px,var(--rule) 34px);box-shadow:8px 0 18px rgba(36,50,74,.2);pointer-events:none;animation:pageTurn .6s ease-in forwards}
+.pg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.pg-tt{min-width:0}
+.pg-t1{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px}
+.pg-t1 h1{margin:0;font-family:var(--hand);font-size:28px;line-height:1.2}
+.pg-n{padding:0 9px;border:1.5px solid var(--ink);border-radius:999px;background:var(--c);font-family:var(--num);font-size:18px;font-weight:700;white-space:nowrap;transform:rotate(4deg)}
+.squig{display:block;margin-top:2px}
+.pg-cap{margin:6px 0 0;font-family:var(--hand);font-size:14.5px;color:var(--ink2)}
+.pg-lead{margin:8px 0 0;font-size:12.5px;color:var(--ink3)}
+.done-stamp{display:inline-block;margin:8px 0 0 2px;padding:3px 12px;border:4px double var(--stamp);border-radius:10px;background:rgba(251,246,234,.85);color:var(--stamp);font-family:var(--hand);font-size:19px;font-weight:700;transform:rotate(-8deg)}
+.done-stamp.in{animation:stampIn .55s cubic-bezier(.2,1.4,.4,1) both}
+.illo{flex:none;width:104px;height:84px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 4px 5px rgba(36,50,74,.18))}
+.illo svg{display:block;width:104px;height:84px;overflow:visible}
+.illo.pop-a{animation:popA .5s ease-out}
+.illo.pop-b{animation:popB .5s ease-out}
+.tent .t-bag,.tent .t-poles,.tent .t-flag{transition:opacity .4s ease}
+.tent .t-body{transform-origin:60px 84px;transition:transform .7s cubic-bezier(.34,1.56,.64,1),opacity .3s ease}
+.tent[data-st="0"] .t-poles,.tent[data-st="0"] .t-flag{opacity:0}
+.tent:not([data-st="0"]) .t-bag{opacity:0}
+.tent[data-st="0"] .t-body,.tent[data-st="1"] .t-body{transform:scaleY(.05);opacity:0}
+.tent:not([data-st="3"]) .t-flag{opacity:0}
+.steam path{animation:steam 2.2s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.5s}
+.steam path:nth-child(3){animation-delay:.9s}
+.steam{transition:opacity .5s ease}
+.pot-fl{transform-box:fill-box;transform-origin:50% 100%;animation:flick .7s ease-in-out infinite alternate}
+.typing{animation:typing 1.4s steps(2) infinite}
+.bag-fill{transition:transform .8s cubic-bezier(.34,1.56,.64,1)}
+.rows{list-style:none;margin:12px 0 0;padding:0}
+.row{border-radius:8px}
+.hit{position:relative;display:flex;align-items:flex-start;gap:12px;min-height:58px;padding:9px 2px 8px;cursor:pointer}
+.ck-in{position:absolute;left:4px;top:12px;width:22px;height:22px;margin:0;opacity:0;pointer-events:none}
+.box{position:relative;flex:none;width:26px;height:26px;margin-top:2px;border:2px solid var(--ink);border-radius:255px 15px 225px 15px/15px 225px 15px 255px;background:var(--card)}
+.ck-in:focus-visible+.box{outline:3px solid var(--stamp);outline-offset:3px}
+.box .ck{position:absolute;left:-2px;top:-11px;width:34px;height:34px;overflow:visible}
+.box .ck path{fill:none;stroke:var(--stamp);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40;transition:stroke-dashoffset .42s ease-out}
+.row.done .box .ck path{stroke-dashoffset:0}
+.box .bst{position:absolute;left:-17px;top:-17px;width:60px;height:60px;overflow:visible;opacity:0;pointer-events:none}
+.box .bst path{fill:none;stroke:var(--stamp);stroke-width:2.5;stroke-linecap:round}
+.row.bst-a .bst{animation:burstA .6s ease-out}
+.row.bst-b .bst{animation:burstB .6s ease-out}
+.txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.nm{font-family:var(--hand);font-size:17.5px;font-weight:700;line-height:1.38;transition:color .3s ease}
+.nm b{color:var(--stamp)}
+.row.done .nm{color:var(--ink2);text-decoration:line-through;text-decoration-color:var(--stamp);text-decoration-thickness:2px}
+.nt{font-size:12.5px;line-height:1.5;color:var(--ink2)}
+.nt b{color:var(--ink)}
+.nd{display:inline-block;margin-right:6px;padding:0 6px;border:1.2px solid var(--ink);border-radius:99px;background:var(--c);font-size:11px;font-weight:700;line-height:16px;color:var(--ink);vertical-align:1px;transition:opacity .3s ease}
+.row.done .nd{opacity:.35}
+.row.flash{animation:flash 1.8s ease-out}
+.pg-foot{margin-top:18px}
+.nextpg{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 16px 0 12px;border:1.5px solid var(--ink);border-radius:6px 16px 16px 6px;background:#d9bf93;box-shadow:var(--sh);font-family:var(--hand);font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;transform:rotate(-1.5deg)}
+.nextpg::before{content:"";flex:none;width:10px;height:10px;border:1.5px solid var(--ink);border-radius:50%;background:var(--paper)}
+.side{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;min-width:0}
+.idx{position:sticky;top:calc(var(--hd-h) + 14px);display:flex;flex-direction:column;gap:8px;padding-top:34px}
+.ix{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:40px;height:86px;margin-left:-1.5px;padding:0;border:1.5px solid var(--ink);border-left:0;border-radius:0 12px 12px 0;background:var(--c);cursor:pointer;transition:width .25s ease}
+.ix[aria-selected="true"]{width:50px;background:var(--paper);box-shadow:3px 3px 0 rgba(36,50,74,.15)}
+.ixl{writing-mode:vertical-rl;font-family:var(--hand);font-size:16px;font-weight:700;letter-spacing:3px;line-height:1}
+.ixk{display:none;width:15px;height:15px;border:1.5px solid var(--ink);border-radius:50%;background:var(--ok)}
+.ix.full .ixk{display:block}
+.pc-side-w{position:sticky;bottom:calc(var(--tb-h) + var(--sb) + 10px);width:52px;height:52px;margin-top:18px}
+.pc-side{display:block;width:52px;height:52px;padding:0;border:0;background:none;cursor:pointer}
+.pc-side-w .bub{right:46px;bottom:34px;border-bottom-right-radius:4px}
+
+/* ---------- 營火 ---------- */
+.fire-h{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin:2px 0 12px}
+.fire-h h1{margin:0;font-family:var(--hand);font-size:28px;line-height:1.2}
+.supply{flex:none;display:inline-flex;align-items:center;gap:6px;padding:4px 12px 4px 6px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);font-family:var(--hand);font-size:15px;font-weight:700}
+.supply svg{width:20px;height:20px}
+.supply.practice{background:#e9e2d2}
+.scene{position:relative;overflow:hidden;border:2px solid var(--ink);border-radius:18px;background:#34507f;box-shadow:4px 5px 0 rgba(36,50,74,.12)}
+.scene-art{display:block;width:100%;height:auto}
+.scene .tw{animation:twinkle 2.6s ease-in-out infinite}
+.scene .tw:nth-child(2n){animation-delay:.8s}
+.scene .glow{animation:glowPulse 2s ease-in-out infinite}
+.scene .fire-g{transform-origin:190px 258px;transition:transform .8s ease}
+.scene .fl1{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.2s ease-in-out infinite alternate}
+.scene .fl2{transform-box:fill-box;transform-origin:50% 100%;animation:flick .9s ease-in-out infinite alternate-reverse}
+.scene .em,.scene .sm{opacity:0}
+.scene.roasting .em{animation:ember 1s linear infinite}
+.scene.roasting .em:nth-child(2){animation-duration:1.15s;animation-delay:.3s}
+.scene.roasting .em:nth-child(3){animation-duration:.95s;animation-delay:.6s}
+.scene.smoky .sm{animation:smoke 1.5s ease-out infinite}
+.scene.smoky .sm:nth-child(2){animation-delay:.5s}
+.scene .tagc{position:absolute;padding:2px 9px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);font-size:11.5px;font-weight:700;white-space:nowrap}
+.scene .t1{left:10px;top:10px}
+.scene .t2{left:10px;bottom:10px;background:#ffe9b0}
+.scene .say{position:absolute;right:12px;top:12px;max-width:min(58%,200px);border-radius:14px 14px 4px 14px;font-size:15.5px;transform-origin:90% 100%;transform:scale(.6)}
+.scene .say.show{transform:none}
+.scene-pc{position:absolute;right:2%;bottom:9%;width:27%;height:32%;padding:0;border:0;background:none;cursor:pointer}
+.roast{margin-top:16px}
+.roast-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.roast-top h2{margin:0;font-family:var(--hand);font-size:20px}
+.tally{font-family:var(--num);font-size:19px;font-weight:700}
+.heat{position:relative;margin-top:6px;padding-top:12px}
+.heat-ptr{position:absolute;top:0;left:0;width:0;height:0;margin-left:-7px;border-left:7px solid transparent;border-right:7px solid transparent;border-top:10px solid var(--ink)}
+.heat-bar{display:flex;height:22px;overflow:hidden;border:2px solid var(--ink);border-radius:255px 12px 225px 12px/12px 225px 12px 255px}
+.heat-bar span{display:flex;align-items:center;justify-content:center}
+.z1{flex:20;background:#fffaf0}
+.z2{flex:35;background:#f6dfa5;border-left:1.5px solid var(--ink)}
+.z3{flex:20;background:#e3a95a;border-left:1.5px solid var(--ink);border-right:1.5px solid var(--ink);font-family:var(--hand);font-size:12px;font-weight:700}
+.z4{flex:17;background:#9c5a2c}
+.z5{flex:8;background:#2b2522;border-left:1.5px solid var(--ink)}
+.heat-lb{display:flex;justify-content:space-between;margin-top:3px;font-size:11px;color:var(--ink2)}
+.roast-btn{display:block;width:100%;min-height:64px;margin-top:12px;border:2px solid var(--ink);border-radius:18px;background:#ffd27a;box-shadow:0 5px 0 var(--ink);color:var(--ink);font-family:var(--hand);font-size:20px;font-weight:700;cursor:pointer;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;transition:transform .08s ease,box-shadow .08s ease,background-color .2s ease}
+.roast-btn.practice{background:#efe6d2}
+.roast-btn.on{transform:translateY(4px);box-shadow:0 1px 0 var(--ink);background:#f06a3a;color:#fff}
+.roast-tip{margin:12px 0 0;font-size:13px;line-height:1.55;color:var(--ink2)}
+.cdn{margin-top:20px;padding:14px;border:1.5px solid var(--ink);border-radius:14px;background:var(--card);box-shadow:var(--sh)}
+.cdn h2{margin:0;font-family:var(--hand);font-size:20px}
+.cdn-line{margin:2px 0 0;font-family:var(--hand);font-size:15px;font-weight:700}
+.cdn-cap{margin:8px 0 0;font-size:12.5px;color:var(--ink2)}
+.week{display:grid;grid-template-columns:repeat(var(--n,7),minmax(0,1fr));gap:4px;margin-top:10px}
+.day{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:0;padding:6px 0 5px;border:1.5px solid var(--ink);border-radius:10px;background:var(--paper);font-size:11px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.day b{font-family:var(--num);font-size:19px;line-height:1;color:var(--ink)}
+.day.today{background:#ffe9b0}
+.day.go{background:var(--stamp);color:#fff}
+.day.go b{color:#fff}
+
+/* ---------- 分享 ---------- */
+.share-h{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
+.share-pc{position:relative;flex:none;width:66px;height:66px}
+.share-h h1{margin:0;font-family:var(--hand);font-size:28px;line-height:1.2}
+.share-h p{margin:2px 0 0;font-size:13.5px;color:var(--ink2)}
+.copy-card{padding:14px;border:1.5px solid var(--ink);border-radius:14px;background:var(--card);box-shadow:var(--sh)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;border:1.5px solid var(--ink);border-radius:999px;background:var(--paper)}
+.seg button{min-height:40px;border:0;border-radius:999px;background:transparent;font-family:var(--hand);font-size:15px;font-weight:700;cursor:pointer}
+.seg button[aria-selected="true"]{background:var(--w1);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.copy-card textarea{display:block;width:100%;margin-top:10px;padding:10px 12px;border:1.5px solid var(--ink);border-radius:10px;background:var(--paper);font-family:var(--sans);font-size:13.5px;line-height:1.6;resize:vertical}
+.copy-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card);box-shadow:0 3px 0 var(--ink);font-family:var(--hand);font-size:16px;font-weight:700;color:var(--ink);text-decoration:none;cursor:pointer}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.btn.solid{background:var(--stamp);color:#fff}
+.btn.ghost{min-height:42px;border-style:dashed;background:transparent;box-shadow:none;font-size:14.5px}
+.about{margin-top:18px;padding:14px;border:1.5px dashed var(--ink3);border-radius:14px;background:rgba(255,253,248,.6)}
+.about h2{margin:0 0 4px;font-family:var(--hand);font-size:17px}
+.about p{margin:0;font-size:13px;line-height:1.6;color:var(--ink2)}
+.resets{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.foot-t{margin:18px 0 0;text-align:center;font-family:var(--hand);font-size:13px;color:var(--ink3)}
+
+/* ---------- 提示、彩帶 ---------- */
+.toast{position:fixed;left:50%;bottom:calc(var(--tb-h) + var(--sb) + 14px);z-index:50;display:flex;align-items:center;gap:8px;width:max-content;max-width:min(92vw,440px);padding:6px 14px 6px 6px;border:2px solid var(--ink);border-radius:18px;background:var(--card);box-shadow:3px 4px 0 rgba(36,50,74,.18);font-family:var(--hand);font-size:15px;font-weight:700;line-height:1.4;opacity:0;pointer-events:none;transform:translate(-50%,16px);transition:opacity .25s ease,transform .3s cubic-bezier(.34,1.56,.64,1)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.t-pc{flex:none;width:40px;height:40px}
+.confetti{position:fixed;inset:0;z-index:60;width:100%;height:100%;pointer-events:none}
+
+/* ---------- 動畫 ---------- */
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes pcBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-1.6px)}}
+@keyframes pcSide{from{transform:translateX(-3px)}to{transform:translateX(3px)}}
+@keyframes clawWave{0%{transform:rotate(22deg)}100%{transform:rotate(48deg)}}
+@keyframes pcHopA{0%{transform:translateY(0) scale(1,1)}18%{transform:translateY(0) scale(1.1,.88)}48%{transform:translateY(-13px) scale(.95,1.06)}78%{transform:translateY(0) scale(1.07,.93)}100%{transform:translateY(0) scale(1,1)}}
+@keyframes pcHopB{0%{transform:translateY(0) scale(1,1)}18%{transform:translateY(0) scale(1.1,.88)}48%{transform:translateY(-13px) scale(.95,1.06)}78%{transform:translateY(0) scale(1.07,.93)}100%{transform:translateY(0) scale(1,1)}}
+@keyframes pcShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-1.5px)}75%{transform:translateX(1.5px)}}
+@keyframes legs{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+@keyframes flick{0%{transform:scaleY(1) skewX(0deg)}50%{transform:scaleY(1.14) skewX(4deg)}100%{transform:scaleY(.94) skewX(-3deg)}}
+@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes ring{0%,100%{box-shadow:0 0 0 3px rgba(200,67,58,.28)}50%{box-shadow:0 0 0 7px rgba(200,67,58,.1)}}
+@keyframes rise{0%{opacity:1;transform:translateY(0)}70%{opacity:1;transform:translateY(-78px)}100%{opacity:0;transform:translateY(-84px)}}
+@keyframes boom{0%,62%{opacity:0;transform:scale(.2)}72%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes stampIn{0%{opacity:0;transform:scale(2.3) rotate(-30deg)}60%{opacity:1;transform:scale(.92) rotate(-6deg)}100%{opacity:1;transform:scale(1) rotate(-8deg)}}
+@keyframes popA{0%{transform:scale(1)}35%{transform:scale(1.12) rotate(-3deg)}70%{transform:scale(.96) rotate(2deg)}100%{transform:scale(1)}}
+@keyframes popB{0%{transform:scale(1)}35%{transform:scale(1.12) rotate(-3deg)}70%{transform:scale(.96) rotate(2deg)}100%{transform:scale(1)}}
+@keyframes burstA{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes burstB{0%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(1.5)}}
+@keyframes pageTurn{0%{transform:perspective(1000px) rotateY(0);opacity:1}85%{opacity:1}100%{transform:perspective(1000px) rotateY(-112deg);opacity:0}}
+@keyframes steam{0%{opacity:0;transform:translateY(6px)}40%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+@keyframes typing{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes flash{0%,35%{background:rgba(237,189,85,.55)}100%{background:rgba(237,189,85,0)}}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes glowPulse{0%,100%{opacity:.5}50%{opacity:.8}}
+@keyframes ember{0%{opacity:0;transform:translateY(0)}20%{opacity:1}100%{opacity:0;transform:translateY(-46px)}}
+@keyframes smoke{0%{opacity:0;transform:translate(0,0) scale(.6)}30%{opacity:.8}100%{opacity:0;transform:translate(10px,-56px) scale(1.6)}}
+
+@media (max-width:359px){
+  .st-mini .mini span{display:none}
+  .camps{grid-template-columns:1fr}
+  .cover h1{font-size:26px}
+  .cover .eyebrow{font-size:13.5px}
+  .pg-t1 h1{font-size:24px}
+  .pg-cap{font-size:13px}
+  .illo,.illo svg{width:84px;height:68px}
+}
+@media (min-width:600px){
+  .view{padding-top:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div id="camp-app"></div>
+<noscript><p class="noscript">這份露營清單需要開啟 JavaScript 才能顯示。</p></noscript>
+
+<!-- ================= 清單內容：要改項目或出發日期改這一段 ================= -->
+<script>
+/*
+ * 露營裝備清單｜清單內容
+ * 要換成別的行程或改出發日期，只要改這一段。
+ *
+ * 規則：
+ * - 每個項目的 id 不可以重複（勾選紀錄靠 id 記住）
+ * - **文字** 會顯示成粗體
+ * - 改了某項的 id，那一項原本的勾選紀錄就會消失
+ * - need 是「沒帶會怎樣」，對應下面 needs 的代號，會顯示在上方的出發體力
+ */
+window.CAMP_DATA = {
+  title: '露營裝備清單',
+  subtitle: '出發前一起打勾',
+  people: 6,
+  tents: 2,
+
+  // 出發日期（年-月-日），用來倒數天數
+  startDate: '2026-11-14',
+
+  // 封面的三張貼紙
+  stickers: ['6 人小隊', '2 頂帳篷', '山區夜晚會冷'],
+
+  // 登山路線上的四個營地，各對應清單的一區（由下往上）
+  camps: { asks: '海岸營地', shared: '森林營地', cook: '高山營地', me: '雪線營地' },
+
+  // 出發體力：還沒打勾的項目算哪一種狀態
+  needs: {
+    cold: { label: '寒冷', color: '#7fb1dc' },
+    wet: { label: '淋濕', color: '#6fb7a0' },
+    hungry: { label: '飢餓', color: '#edbd55' },
+    dark: { label: '摸黑', color: '#9b87c6' },
+    hurt: { label: '受傷', color: '#e8796b' },
+    messy: { label: '狼狽', color: '#c9a77a' },
+    unknown: { label: '沒情報', color: '#b7bfcc' }
+  },
+
+  // 海岸營地：出發前先問營區
+  asks: [
+    { id: 'q1', need: 'unknown', name: '插座位置', note: '決定戶外用延長線怎麼帶' },
+    { id: 'q2', need: 'unknown', name: '能不能用吹風機', note: '吹風機 1 支' },
+    { id: 'q3', need: 'unknown', name: '飲水設備', note: '飲用水 6 人份再調整' }
+  ],
+
+  // 森林營地：公共裝備，打勾＝已備妥
+  shared: [
+    { id: 's1', need: 'cold', name: '帳篷＋營柱、營釘、營繩', note: '2 帳，各自確認配件完整' },
+    { id: 's2', need: 'cold', name: '地布、防潮墊', note: '每帳 1 組' },
+    { id: 's3', need: 'hurt', name: '營槌、拔釘器', note: '1～2 組' },
+    { id: 's4', need: 'wet', name: '客廳帳', note: '公共遮雨用' },
+    { id: 's5', need: 'hungry', name: '露營桌', note: '共 6 人用，依桌面大小安排' },
+    { id: 's6', need: 'messy', name: '露營椅', note: '**6 張**，可各自帶' },
+    { id: 's7', need: 'dark', name: '營燈、掛鉤', note: '兩帳及公共區照明' },
+    { id: 's8', need: 'dark', name: '戶外用延長線', note: '先確認營區插座位置' },
+    { id: 's9', need: 'cold', name: '**吹風機**', note: '1 支，先確認營區可使用' },
+    { id: 's10', need: 'messy', name: '打氣機', note: '使用充氣床才需要' },
+    { id: 's11', need: 'messy', name: '衛生紙、濕紙巾', note: '共用' },
+    { id: 's12', need: 'messy', name: '垃圾袋、回收袋', note: '各數個' },
+    { id: 's13', need: 'hungry', name: '飲用水', note: '6 人份，依營區飲水設備調整' },
+    { id: 's14', need: 'hungry', name: '保冷袋＋冰磚', note: '運送需冷藏的食物，到營區再放冰箱' },
+    { id: 's15', need: 'hurt', name: '急救包', note: '1 組' },
+    { id: 's16', need: 'messy', name: '桌遊、撲克牌', note: '自由認領' }
+  ],
+
+  // 高山營地：炊具（tag 會顯示在說明前面）
+  cook: [
+    { id: 'c1', need: 'hungry', tag: '炊具', name: '卡式爐＋適用瓦斯罐', note: '依菜單準備，確認餘量' },
+    { id: 'c2', need: 'hungry', tag: '炊具', name: '鍋子、平底鍋、鍋蓋', note: '依菜單挑選' },
+    { id: 'c3', need: 'hungry', tag: '炊具', name: '鍋鏟、夾子、湯勺', note: '1 組' },
+    { id: 'c4', need: 'hungry', tag: '備料', name: '刀、砧板、料理剪刀', note: '1 組' },
+    { id: 'c5', need: 'hungry', tag: '清潔', name: '洗碗精、海綿、抹布', note: '1 組' }
+  ],
+
+  // 雪線營地：個人行李（只記在自己的手機）
+  me: [
+    { id: 'p1', need: 'cold', name: '睡袋、睡墊／棉被枕頭／充氣床、枕頭', note: '充氣床記得帶打氣機' },
+    { id: 'p2', need: 'cold', name: '保暖外套、長褲、厚襪', note: '山區夜晚保暖用' },
+    { id: 'p3', need: 'cold', name: '毛帽、備用毯', note: '怕冷的人加帶' },
+    { id: 'p4', need: 'wet', name: '換洗衣物、內衣褲', note: '另備一套乾衣服' },
+    { id: 'p5', need: 'wet', name: '雨衣、防水外套', note: '雨傘可另外帶' },
+    { id: 'p6', need: 'wet', name: '拖鞋', note: '' },
+    { id: 'p7', need: 'messy', name: '毛巾、盥洗用品、牙刷', note: '用小袋集中裝' },
+    { id: 'p8', need: 'hungry', name: '碗、筷、湯匙、杯子', note: '建議可重複使用' },
+    { id: 'p9', need: 'hungry', name: '水壺／保溫瓶', note: '裝熱水很方便' },
+    { id: 'p10', need: 'dark', name: '手機、充電線、行動電源', note: '出發前充飽' },
+    { id: 'p11', need: 'dark', name: '頭燈／手電筒', note: '晚上走路、上廁所用' },
+    { id: 'p12', need: 'hurt', name: '個人藥品、防蚊用品、防曬', note: '有過敏藥也記得帶' }
+  ]
+};
+</script>
+
+<!-- ================= 互動程式（一般不需要修改） ================= -->
+<script>
+(() => {
+  'use strict';
+
+  const D = window.CAMP_DATA;
+  const app = document.getElementById('camp-app');
+  if (!app) return;
+  if (!D) { app.textContent = '讀不到清單內容（CAMP_DATA），請確認 index.html 是完整的版本。'; return; }
+
+  /* ---------- 小工具 ---------- */
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const rich = s => esc(s || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+  const plain = s => String(s || '').replace(/\*\*/g, '');
+  const hex = (c, d) => (/^#[0-9a-f]{3,8}$/i.test(String(c || '').trim()) ? String(c).trim() : d);
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const isObj = v => !!v && typeof v === 'object' && !Array.isArray(v);
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* 無法儲存時只留在這次瀏覽 */ } }
+  };
+
+  /* ---------- 清單資料 ---------- */
+  const PEOPLE = parseInt(D.people, 10) || 0;
+  const TENTS = parseInt(D.tents, 10) || 0;
+  const TITLE = D.title || '露營裝備清單';
+  const SUBTITLE = D.subtitle || '出發前一起打勾';
+  const STICKERS = Array.isArray(D.stickers) ? D.stickers.slice(0, 3) : [];
+  const META = [PEOPLE ? PEOPLE + ' 人' : '', TENTS ? TENTS + ' 帳' : ''].filter(Boolean).join('・');
+  const WD = ['日', '一', '二', '三', '四', '五', '六'];
+
+  const NEED_DEFAULT = {
+    cold: { label: '寒冷', color: '#7fb1dc' }, wet: { label: '淋濕', color: '#6fb7a0' },
+    hungry: { label: '飢餓', color: '#edbd55' }, dark: { label: '摸黑', color: '#9b87c6' },
+    hurt: { label: '受傷', color: '#e8796b' }, messy: { label: '狼狽', color: '#c9a77a' },
+    unknown: { label: '沒情報', color: '#b7bfcc' }
+  };
+  const NEEDS = {}, NEED_KEYS = [];
+  const addNeed = (k, n) => {
+    if (NEEDS[k]) return;
+    NEEDS[k] = { key: k, label: String((n && n.label) || k), color: hex(n && n.color, '#cfc6b4') };
+    NEED_KEYS.push(k);
+  };
+  const needSrc = isObj(D.needs) && Object.keys(D.needs).length ? D.needs : NEED_DEFAULT;
+  Object.keys(needSrc).forEach(k => addNeed(k, needSrc[k]));
+
+  const SECS = ['asks', 'shared', 'cook', 'me'];
+  const SEC = {
+    asks: { title: '先問營區', short: '營區', color: '#f0a29a', camp: '海岸營地', lead: '出發前先打電話問營區', stamp: '都問好了' },
+    shared: { title: '公共裝備', short: '公共', color: '#9cc2a5', camp: '森林營地', lead: '打勾代表已經準備好', stamp: '全部備妥' },
+    cook: { title: '炊具', short: '炊具', color: '#edbd55', camp: '高山營地', lead: '卡式爐、瓦斯罐和鍋具依菜單準備', stamp: '可以開伙' },
+    me: { title: '個人行李', short: '行李', color: '#9cbfe0', camp: '雪線營地', lead: '每個人自己的行李，只記在你的手機', stamp: '行李到齊' }
+  };
+  const CAMP_NAMES = isObj(D.camps) ? D.camps : {};
+  const ITEM = {}, ALL = [];
+  SECS.forEach((k, i) => {
+    const S = SEC[k];
+    S.key = k; S.i = i; S.items = [];
+    if (CAMP_NAMES[k]) S.camp = String(CAMP_NAMES[k]);
+    (Array.isArray(D[k]) ? D[k] : []).forEach(o => {
+      if (!o || o.id == null) return;
+      const id = String(o.id);
+      if (ITEM[id]) return; /* id 重複時只留第一個 */
+      let need = o.need != null ? String(o.need) : '';
+      if (!NEEDS[need]) { need = 'other'; addNeed('other', { label: '其他', color: '#cfc6b4' }); }
+      const it = {
+        id, sec: k, need,
+        name: String(o.name != null ? o.name : (o.title || '')),
+        note: String(o.note != null ? o.note : (o.sub || '')),
+        tag: o.tag ? String(o.tag) : ''
+      };
+      ITEM[id] = it; S.items.push(it); ALL.push(it);
+    });
+  });
+  const TOTAL = ALL.length;
+
+  /* 同一個 github.io 網域下的其他專案共用 localStorage，所以用網址路徑區分 */
+  const NS = 'camp:' + location.pathname + ':';
+  const KEY_SHARED = NS + 'shared-v1', KEY_ME = NS + 'me-v1', KEY_FIRE = NS + 'fire-v1', KEY_UI = NS + 'ui-v1';
+
+  /* ---------- 狀態 ---------- */
+  function loadDone() {
+    const src = store.get(KEY_SHARED, null), o = {};
+    const d = isObj(src) && isObj(src.done) ? src.done : {};
+    Object.keys(d).forEach(k => { if (d[k] === true && ITEM[k] && ITEM[k].sec !== 'me') o[k] = true; });
+    return o;
+  }
+  let DONE = loadDone();
+  let MINE = store.get(KEY_ME, {});
+  if (!isObj(MINE)) MINE = {};
+  const num = v => Math.max(0, parseInt(v, 10) || 0);
+  function loadFire() {
+    const f = store.get(KEY_FIRE, {});
+    const o = isObj(f) ? f : {};
+    return { used: num(o.used), perfect: num(o.perfect), burnt: num(o.burnt) };
+  }
+  let FIRE = loadFire();
+  let UI = store.get(KEY_UI, {});
+  if (!isObj(UI)) UI = {};
+  const saveDone = () => store.set(KEY_SHARED, { v: 2, done: DONE, updated: Date.now() });
+  const saveMine = () => store.set(KEY_ME, MINE);
+  const saveFire = () => store.set(KEY_FIRE, FIRE);
+  const saveUI = () => store.set(KEY_UI, UI);
+
+  const isDone = it => (it.sec === 'me' ? MINE[it.id] === true : DONE[it.id] === true);
+  const secCount = k => SEC[k].items.filter(isDone).length;
+  const secFull = k => secCount(k) >= SEC[k].items.length;
+  const firstOpen = () => SECS.findIndex(k => !secFull(k));
+  const allDone = () => firstOpen() < 0;
+  const doneTotal = () => ALL.filter(isDone).length;
+  const earned = () => SECS.filter(k => SEC[k].items.length && secFull(k)).length;
+  const supply = () => Math.max(0, earned() - FIRE.used);
+  function missingByNeed() {
+    const m = {};
+    NEED_KEYS.forEach(k => { m[k] = 0; });
+    ALL.forEach(it => { if (!isDone(it)) m[it.need] = (m[it.need] || 0) + 1; });
+    return m;
+  }
+
+  /* ---------- 倒數 ---------- */
+  function parseDate(s) {
+    const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(String(s || '').trim());
+    if (!m) return null;
+    const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    return isNaN(d.getTime()) ? null : d;
+  }
+  const START = parseDate(D.startDate);
+  const md = d => (d.getMonth() + 1) + '/' + d.getDate();
+  const today0 = () => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); };
+  const daysLeft = () => (START ? Math.round((START - today0()) / 86400000) : null);
+  const whenText = () => (START ? md(START) + '（' + WD[START.getDay()] + '）' : '');
+  function countdownLine() {
+    const n = daysLeft();
+    if (n === null) return '';
+    if (n > 0) return whenText() + '出發・還有 ' + n + ' 天';
+    if (n === 0) return whenText() + '今天出發';
+    return whenText() + '已出發';
+  }
+  function fireScale() {
+    const n = daysLeft();
+    if (n === null) return 0.85;
+    if (n <= 0) return 1.15;
+    return 0.6 + 0.5 * (1 - Math.min(n, 14) / 14);
+  }
+  function fireCaption() {
+    const n = daysLeft();
+    if (n === null) return '營火會隨著出發日越燒越旺';
+    if (n < 0) return '已經出發了，祝大家玩得開心';
+    if (n === 0) return '今天出發！營火燒到最旺';
+    if (n === 1) return '明天就出發，火燒得正旺';
+    if (n <= 3) return '剩 ' + n + ' 天，火越燒越旺';
+    if (n <= 7) return '還有 ' + n + ' 天，火慢慢旺起來';
+    return '還有 ' + n + ' 天，火還小小的';
+  }
+
+  /* ---------- 圖 ---------- */
+  const INK = '#24324a';
+  const TRAIL = 'M150 424C140 408 114 400 114 376C114 346 228 336 228 306C228 274 120 266 120 232C120 198 212 190 212 158C212 116 171 86 171 40';
+  const NODE = { start: [150, 424], asks: [114, 376], shared: [228, 306], cook: [120, 232], me: [212, 158], summit: [171, 40] };
+  const CF = { start: 0, asks: 0.1051, shared: 0.3421, cook: 0.5751, me: 0.7854, summit: 1 };
+  const SX = { start: 0, asks: 28, shared: -28, cook: 28, me: -28, summit: 0 };
+  const SIDE = { asks: 'l', shared: 'r', cook: 'l', me: 'r' };
+  const ORDER = ['start'].concat(SECS, ['summit']);
+
+  /* 寄居帳（原創角色）：背著小帳篷當殼、只會橫著走的寄居蟹 */
+  const CRAB_LEGS = 'M60 136 52 145 51 152M70 138 65 147 65 153M104 138l6 8 2 6M114 135l8 8 4 6';
+  function PC(cls, attrs, extra) {
+    const co = '#e8796b';
+    return '<svg class="pc' + (cls ? ' ' + cls : '') + '" viewBox="22 38 120 120"' + (attrs || '') + ' aria-hidden="true" focusable="false">'
+      + '<ellipse cx="84" cy="153" rx="50" ry="5" fill="' + INK + '" opacity=".14"/>'
+      + '<g class="pc-b">'
+      + '<path d="M52 138 36 146M120 138l16 8" stroke="' + INK + '" stroke-width="1.4"/>'
+      + '<path d="M36 143v7M136 143v7" stroke="#6b4a30" stroke-width="2.6" stroke-linecap="round"/>'
+      + '<g class="legs out-g" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="' + CRAB_LEGS + '" stroke="' + INK + '" stroke-width="6.5"/><path d="' + CRAB_LEGS + '" stroke="' + co + '" stroke-width="3.6"/></g>'
+      + '<path d="M50 140 86 62l36 78Z" fill="#edbd55" stroke="' + INK + '" stroke-width="2.4" stroke-linejoin="round"/>'
+      + '<path d="M86 62V44" stroke="' + INK + '" stroke-width="2"/>'
+      + '<path class="flag" d="M86 44l15 5.5L86 55Z" fill="#c8433a" stroke="' + INK + '" stroke-width="1.4" stroke-linejoin="round"/>'
+      + '<path d="M86 92l14 48H72Z" fill="#c98a12" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+      + '<g class="out-g">' + (extra || '')
+      + '<path d="M62 128l14 2" stroke="' + INK + '" stroke-width="8" stroke-linecap="round"/><path d="M62 128l14 2" stroke="' + co + '" stroke-width="5" stroke-linecap="round"/>'
+      + '<path class="claw" d="M62 128C60 114 40 110 32 121l13 5-13 5c6 12 28 11 30-3Z" fill="' + co + '" stroke="' + INK + '" stroke-width="2.2" stroke-linejoin="round"/>'
+      + '<path d="M98 134l8 1" stroke="' + INK + '" stroke-width="7" stroke-linecap="round"/><path d="M98 134l8 1" stroke="' + co + '" stroke-width="4.4" stroke-linecap="round"/>'
+      + '<path d="M104 135c1-7 12-9 16-4l-8 3 8 4c-4 5-15 4-16-3Z" fill="' + co + '" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+      + '<path d="M81 123 77 104M91 123l4-19" stroke="' + INK + '" stroke-width="5.5" stroke-linecap="round"/><path d="M81 123 77 104M91 123l4-19" stroke="' + co + '" stroke-width="2.8" stroke-linecap="round"/>'
+      + '<ellipse cx="86" cy="131" rx="13" ry="10" fill="' + co + '" stroke="' + INK + '" stroke-width="2.2"/>'
+      + '<path d="M82 133q4 3 8 0" fill="none" stroke="' + INK + '" stroke-width="1.8" stroke-linecap="round"/>'
+      + '<ellipse cx="78" cy="132" rx="2.4" ry="1.5" fill="#f6c3bb"/><ellipse cx="94" cy="132" rx="2.4" ry="1.5" fill="#f6c3bb"/>'
+      + '<g class="e-round"><circle cx="77" cy="101" r="5" fill="' + INK + '"/><circle cx="95" cy="101" r="5" fill="' + INK + '"/><circle cx="78.6" cy="99.4" r="1.6" fill="#fff"/><circle cx="96.6" cy="99.4" r="1.6" fill="#fff"/></g>'
+      + '<path class="e-happy" d="M72.5 103q4.5-6 9 0M90.5 103q4.5-6 9 0" fill="none" stroke="' + INK + '" stroke-width="2.6" stroke-linecap="round"/>'
+      + '</g>'
+      + '<g class="hide-g"><path d="M86 92l14 48H72Z" fill="#b97c10" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/><path d="M86 97v41" stroke="' + INK + '" stroke-width="1.6" stroke-dasharray="2.5 2.5"/><rect x="83" y="104" width="6" height="9" rx="2" fill="#edbd55" stroke="' + INK + '" stroke-width="1.2"/><path d="M80 127h12" stroke="' + INK + '" stroke-width="7" stroke-linecap="round"/><circle cx="83" cy="127" r="1.6" fill="#fff"/><circle cx="89" cy="127" r="1.6" fill="#fff"/><text x="106" y="86" font-size="22" font-weight="700" fill="#c8433a" style="font-family:var(--hand)">!?</text></g>'
+      + '<g class="spark" fill="#edbd55" stroke="' + INK + '" stroke-width="1.2" stroke-linejoin="round"><path d="M26 98l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5Z"/><path d="M120 66l2 4.5 4.5 2-4.5 2-2 4.5-2-4.5-4.5-2 4.5-2Z"/></g>'
+      + '</g></svg>';
+  }
+  /* 營火場景：寄居帳用大鉗子夾著烤肉籤（座標是角色自己的） */
+  const STICK = '<path d="M41 127-24 65" stroke="#8b5a34" stroke-width="4.4" stroke-linecap="round"/>'
+    + '<rect id="mallow" x="-44.25" y="48" width="30" height="25" rx="8.75" fill="#fffaf0" stroke="' + INK + '" stroke-width="2.5" transform="rotate(43.7 -29.25 60.5)"/>';
+
+  const IC = {
+    trail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20.5 9.5 7l4 6.5 2.5-3.5 6 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 7l1.8 3.2-1.8 1.2-1.6-1.2Z" fill="currentColor"/></svg>',
+    list: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 12.2l2.4 2.4 4.6-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    fire: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8c3.4 4.2 5.2 6.6 3.7 10-1.1 2.3-6.3 2.3-7.4 0C6.8 9.4 8.6 7 12 2.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4.5 21l15-3.6M4.5 17.4l15 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    share: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4.5V5.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 9.5h7M8.5 12.5h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    mallow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21 11 13" stroke="#6b4a30" stroke-width="2.2" stroke-linecap="round"/><rect x="10" y="4" width="10" height="9" rx="3" fill="#fffaf0" stroke="' + INK + '" stroke-width="1.8" transform="rotate(20 15 8.5)"/></svg>'
+  };
+  const CAMPFIRE = '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" style="overflow:visible">'
+    + '<g class="fi-on"><g class="fl"><path d="M12 3c4 5 6 8 3.6 12-1.4 2.2-5.8 2.2-7.2 0C6 11 8 8 12 3Z" fill="#f06a3a" stroke="' + INK + '" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 9c2 2.4 3 4 1.8 6-.8 1.2-2.8 1.2-3.6 0-1-2 0-3.6 1.8-6Z" fill="#ffd27a"/></g><path d="M5 21 19 17M5 17l14 4" stroke="#6b4a30" stroke-width="2.6" stroke-linecap="round"/></g>'
+    + '<g class="fi-off"><path d="M5 20 19 16M5 16l14 4" stroke="#8b7a68" stroke-width="2.6" stroke-linecap="round"/></g></svg>';
+  const BADGE_IC = {
+    phone: '<rect x="7" y="3" width="10" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>',
+    tent: '<path d="M3 20 12 5l9 15ZM12 20v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>',
+    pot: '<path d="M5 11h14v3a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5ZM3 11h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>',
+    bag: '<path d="M7 9.5a5 5 0 0 1 10 0V20H7ZM10 14h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>',
+    mallow: '<path d="M3 21 12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="11" y="4" width="9" height="9" rx="3" fill="none" stroke="currentColor" stroke-width="2" transform="rotate(20 15.5 8.5)"/>',
+    flag: '<path d="M6 21V3M6 4l12 4-12 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
+  };
+  const BADGES = [
+    { key: 'asks', label: '情報', color: '#f0a29a', icon: 'phone' },
+    { key: 'shared', label: '搭營', color: '#9cc2a5', icon: 'tent' },
+    { key: 'cook', label: '伙房', color: '#edbd55', icon: 'pot' },
+    { key: 'me', label: '背包', color: '#9cbfe0', icon: 'bag' },
+    { key: 'mallow', label: '烤棉花糖', color: '#fff4cc', icon: 'mallow' },
+    { key: 'summit', label: '攻頂', color: '#f6a37e', icon: 'flag' }
+  ];
+  const badgeGot = b => (SEC[b.key] ? secFull(b.key) : b.key === 'mallow' ? FIRE.perfect > 0 : allDone());
+
+  /* 帳篷（清單插圖與營火場景共用） */
+  const TENT = poles => '<path d="M4 84H116" stroke="' + INK + '" stroke-width="2" stroke-linecap="round"/>'
+    + '<g class="t-bag"><rect x="36" y="64" width="48" height="18" rx="9" fill="#9cc2a5" stroke="' + INK + '" stroke-width="2"/><path d="M48 64v18M72 64v18" stroke="' + INK + '" stroke-width="1.6"/><path d="M18 80l36-5M66 80l38-4" stroke="' + poles + '" stroke-width="3" stroke-linecap="round"/></g>'
+    + '<g class="t-poles"><path d="M24 84 60 22l36 62" fill="none" stroke="' + poles + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></g>'
+    + '<g class="t-body"><path d="M60 20 100 84H20Z" fill="#9cc2a5" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/><path d="M60 40 72 84H48Z" fill="#5f8a6c" stroke="' + INK + '" stroke-width="1.6" stroke-linejoin="round"/><path d="M20 84 8 70M100 84l12-14" stroke="' + INK + '" stroke-width="1.4" stroke-dasharray="3 3"/></g>'
+    + '<g class="t-flag"><path d="M60 20V4" stroke="' + INK + '" stroke-width="2"/><path d="M60 4l16 5-16 5Z" fill="#c8433a" stroke="' + INK + '" stroke-width="1.4" stroke-linejoin="round"/></g>';
+
+  const ILLO = {
+    asks: '<svg class="il" data-il="asks" viewBox="0 0 120 96" focusable="false">'
+      + '<rect x="12" y="22" width="36" height="66" rx="7" fill="' + INK + '"/><rect x="16" y="28" width="28" height="50" rx="3" fill="#cfe3f2"/><circle cx="30" cy="83" r="2.4" fill="#fbf6ea"/>'
+      + '<path class="typing" d="M20 46h20M20 54h14" stroke="#7fb1dc" stroke-width="3" stroke-linecap="round"/>'
+      + '<path d="M58 8h52a6 6 0 0 1 6 6v28a6 6 0 0 1-6 6H72L62 58l2-10h-6a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6Z" fill="#fffdf8" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+      + '<text id="ph-txt" x="84" y="33" text-anchor="middle" font-size="13" font-weight="700" fill="' + INK + '" style="font-family:var(--hand)"></text></svg>',
+    shared: '<svg class="il tent" data-il="shared" data-st="0" viewBox="0 0 120 96" focusable="false">' + TENT('#6b4a30') + '</svg>',
+    cook: '<svg class="il" data-il="cook" viewBox="0 0 120 96" focusable="false">'
+      + '<g class="steam" id="pot-steam" fill="none" stroke="#8a93a3" stroke-width="2.4" stroke-linecap="round"><path d="M44 32c-6-6 6-10 0-18"/><path d="M60 30c-6-6 6-10 0-18"/><path d="M76 32c-6-6 6-10 0-18"/></g>'
+      + '<path d="M30 40h60v20a18 18 0 0 1-18 18H48a18 18 0 0 1-18-18Z" fill="#9cbfe0" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+      + '<path d="M24 40h72" stroke="' + INK + '" stroke-width="2.6" stroke-linecap="round"/><path d="M30 48h-8M90 48h8" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/>'
+      + '<g class="pot-fl"><path d="M46 92c-4-6 2-9 0-12M60 92c-4-6 2-9 0-12M74 92c-4-6 2-9 0-12" fill="none" stroke="#f06a3a" stroke-width="3" stroke-linecap="round"/></g></svg>',
+    me: '<svg class="il" data-il="me" viewBox="0 0 120 96" focusable="false">'
+      + '<defs><clipPath id="bag-in"><path d="M36 30a24 24 0 0 1 48 0v56H36Z"/></clipPath></defs>'
+      + '<path d="M46 20a14 10 0 0 1 28 0" fill="none" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/>'
+      + '<path d="M36 30a24 24 0 0 1 48 0v56H36Z" fill="#9cbfe0"/>'
+      + '<g clip-path="url(#bag-in)"><g class="bag-fill" id="bag-fill"><rect x="36" y="24" width="48" height="64" fill="#edbd55"/><path d="M36 40h48M36 54h48M36 68h48" stroke="#c98a12" stroke-width="2"/></g></g>'
+      + '<path d="M36 30a24 24 0 0 1 48 0v56H36Z" fill="none" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+      + '<rect x="44" y="58" width="32" height="22" rx="5" fill="#fffdf8" stroke="' + INK + '" stroke-width="2"/><path d="M44 66h32" stroke="' + INK + '" stroke-width="1.6"/>'
+      + '<path d="M30 40v36M90 40v36" stroke="' + INK + '" stroke-width="3" stroke-linecap="round"/></svg>'
+  };
+
+  const MAP_ART = '<svg class="map-art" viewBox="0 0 342 440" width="342" height="440" aria-hidden="true" focusable="false">'
+    + '<defs><symbol id="pine" viewBox="0 0 20 30"><path d="M10 1 18 13h-4l6 9H0l6-9H2Z" fill="#3f6b55" stroke="' + INK + '" stroke-width="1.3" stroke-linejoin="round"/><path d="M9 22h2v7H9Z" fill="' + INK + '"/></symbol></defs>'
+    + '<circle cx="46" cy="124" r="17" fill="#ffd27a" stroke="' + INK + '" stroke-width="1.6"/>'
+    + '<path d="M46 100v-6M46 148v6M22 124h-6M70 124h6M29 107l-4.2-4.2M63 107l4.2-4.2M29 141l-4.2 4.2M63 141l4.2 4.2" stroke="' + INK + '" stroke-width="1.6" stroke-linecap="round" opacity=".5"/>'
+    + '<g class="cl1"><ellipse cx="118" cy="98" rx="22" ry="8" fill="#fffdf8" stroke="' + INK + '" stroke-width="1.4"/><ellipse cx="134" cy="92" rx="14" ry="8.5" fill="#fffdf8" stroke="' + INK + '" stroke-width="1.4"/></g>'
+    + '<g class="cl2"><ellipse cx="298" cy="200" rx="20" ry="7" fill="#fffdf8" stroke="' + INK + '" stroke-width="1.4"/><ellipse cx="312" cy="195" rx="11" ry="6.5" fill="#fffdf8" stroke="' + INK + '" stroke-width="1.4"/></g>'
+    + '<path d="M84 76q4-4 8 0q4-4 8 0M104 88q3-3 6 0q3-3 6 0" fill="none" stroke="' + INK + '" stroke-width="1.5" stroke-linecap="round"/>'
+    + '<path d="M0 282 46 240l42 18 44-44 44 30 46-42 46 36 74-32V440H0Z" fill="#dfe8ef"/>'
+    + '<path d="M0 440V398l34-38 24-60 26-74 34-98 53-100 53 96 34 90 30 82 30 66 24 30V440Z" fill="#e8efe2" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/>'
+    + '<path d="M150 66 171 28l21 36-8 12-8-8-10 14-8-12Z" fill="#fffdf8" stroke="' + INK + '" stroke-width="1.6" stroke-linejoin="round"/>'
+    + '<path d="M96 300l10-6M254 246l9 5M78 352l12-5M272 380l10 4M146 122l-6 5M196 112l6 4M150 184l8-3M244 270l7 5" stroke="' + INK + '" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>'
+    + '<use href="#pine" x="262" y="326" width="16" height="24"/><use href="#pine" x="280" y="336" width="13" height="20"/><use href="#pine" x="246" y="340" width="13" height="20"/>'
+    + '<use href="#pine" x="298" y="398" width="18" height="27"/><use href="#pine" x="316" y="408" width="14" height="21"/><use href="#pine" x="238" y="404" width="15" height="22"/><use href="#pine" x="254" y="410" width="12" height="18"/>'
+    + '<use href="#pine" x="64" y="270" width="13" height="20"/><use href="#pine" x="54" y="284" width="11" height="17"/>'
+    + '<path d="M0 410c16-6 26 6 42 0s28-6 44 2V440H0Z" fill="#9cbfe0" stroke="' + INK + '" stroke-width="1.4"/>'
+    + '<path d="M10 424q6-4 12 0M40 431q6-4 12 0M62 421q5-3 10 0" fill="none" stroke="#fffdf8" stroke-width="1.6" stroke-linecap="round"/>'
+    + '<path d="' + TRAIL + '" fill="none" stroke="#c8433a" stroke-width="2.4" stroke-dasharray="2 7" stroke-linecap="round"/>'
+    + '<path class="tr-ok" id="tr-ok" d="' + TRAIL + '" pathLength="100" fill="none" stroke="#c8433a" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="100 100" stroke-dashoffset="100"/>'
+    + '<g transform="translate(190 406)"><path d="M0 0v22" stroke="#6b4a30" stroke-width="2.4" stroke-linecap="round"/><rect x="-8" y="-13" width="42" height="16" rx="2" fill="#d9bf93" stroke="' + INK + '" stroke-width="1.4"/><text x="13" y="-1" text-anchor="middle" font-size="10.5" font-weight="700" fill="' + INK + '" style="font-family:var(--hand)">登山口</text></g>'
+    + '<g class="sum-flag"><path d="M171 40V10" stroke="' + INK + '" stroke-width="2"/><path class="sf" d="M171 10l15 5-15 5Z" fill="#c8433a" stroke="' + INK + '" stroke-width="1.4" stroke-linejoin="round"/></g>'
+    + '</svg>';
+
+  const SCENE = '<svg class="scene-art" viewBox="0 0 346 300" aria-hidden="true" focusable="false">'
+    + '<defs><radialGradient id="fglow"><stop offset="0" stop-color="#ffd27a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient></defs>'
+    + '<rect width="346" height="300" fill="#34507f"/>'
+    + '<circle cx="290" cy="44" r="15" fill="#ffe9a8"/><circle cx="297" cy="39" r="13" fill="#34507f"/>'
+    + '<g fill="#fff"><circle class="tw" cx="40" cy="34" r="1.6"/><circle cx="96" cy="20" r="1.2"/><circle class="tw" cx="150" cy="48" r="1.5"/><circle cx="210" cy="24" r="1.2"/><circle class="tw" cx="246" cy="74" r="1.1"/><circle cx="70" cy="80" r="1"/><circle class="tw" cx="122" cy="16" r="1.1"/></g>'
+    + '<path d="M0 176 56 120l42 30 52-46 56 52 46-34 94 48V300H0Z" fill="#4d6f96"/>'
+    + '<path d="M0 200 70 160l60 26 66-36 64 32 86-22V300H0Z" fill="#3c5f84"/>'
+    + '<rect y="226" width="346" height="74" fill="#3f6b55"/><path d="M0 226h346" stroke="' + INK + '" stroke-width="1.5" opacity=".5"/>'
+    + '<svg class="tent" id="sc-tent" data-st="0" x="14" y="148" width="120" height="96" viewBox="0 0 120 96" overflow="visible">' + TENT('#c9a77a') + '</svg>'
+    + '<g class="fire-g" id="fire-g"><ellipse class="glow" cx="190" cy="258" rx="74" ry="20" fill="url(#fglow)"/>'
+    + '<g class="fl1"><path d="M190 186c18 20 26 34 15 54-5 9-25 9-30 0-10-17-2-31 15-54Z" fill="#f06a3a" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round"/></g>'
+    + '<g class="fl2"><path d="M190 210c9 10 13 18 8 28-3 5-13 5-16 0-5-9 0-17 8-28Z" fill="#ffd27a"/></g></g>'
+    + '<path d="M158 266 222 252M158 252l64 14" stroke="#6b4a30" stroke-width="8" stroke-linecap="round"/>'
+    + '<g fill="#8a93a3" stroke="' + INK + '" stroke-width="1.4"><ellipse cx="148" cy="268" rx="9" ry="6"/><ellipse cx="232" cy="268" rx="9" ry="6"/><ellipse cx="190" cy="275" rx="10" ry="6"/></g>'
+    + '<g><circle class="em" cx="204" cy="182" r="2.6" fill="#ffd27a"/><circle class="em" cx="214" cy="186" r="2.2" fill="#ffb43b"/><circle class="em" cx="196" cy="188" r="2.2" fill="#f06a3a"/></g>'
+    + '<g><circle class="sm" cx="204" cy="178" r="8" fill="#9aa0aa"/><circle class="sm" cx="214" cy="182" r="6" fill="#b9bec6"/></g>'
+    + PC('hold', ' id="scene-pc" x="246" y="176" width="96" height="96" overflow="visible"', STICK)
+    + '</svg>';
+
+  /* ---------- 版面 ---------- */
+  function rowHTML(it) {
+    const id = esc(it.id), nd = NEEDS[it.need];
+    const note = (it.tag ? esc(it.tag) + (it.note ? '・' : '') : '') + rich(it.note);
+    return '<li class="row" data-id="' + id + '"><label class="hit">'
+      + '<input type="checkbox" class="ck-in" data-id="' + id + '" aria-label="' + esc(plain(it.name)) + '">'
+      + '<span class="box" aria-hidden="true"><svg class="ck" viewBox="0 0 32 32"><path d="M4 15C7 17 9 20 11 23C15 15 20 8 28 2"/></svg><svg class="bst" viewBox="0 0 60 60"><path d="M30 4v8M30 48v8M4 30h8M48 30h8M11 11l6 6M43 43l6 6M49 11l-6 6M17 43l-6 6"/></svg></span>'
+      + '<span class="txt"><span class="nm">' + rich(it.name) + '</span>'
+      + '<span class="nt">' + (nd ? '<span class="nd" style="--c:' + nd.color + '">' + esc(nd.label) + '</span>' : '') + note + '</span></span>'
+      + '</label></li>';
+  }
+
+  function appHTML() {
+    const eyebrow = ['CAMPING CHECKLIST', PEOPLE ? PEOPLE + ' PEOPLE' : '', TENTS ? TENTS + ' TENTS' : ''].filter(Boolean).join(' · ');
+    const nodes = SECS.map(k => {
+      const S = SEC[k], p = NODE[k];
+      return '<a class="node ' + SIDE[k] + '" id="node-' + k + '" href="#' + k + '" tabindex="-1" aria-hidden="true" style="left:' + p[0] + 'px;top:' + p[1] + 'px;--c:' + S.color + '"><span class="ring">' + CAMPFIRE + '</span><span class="tag">' + esc(S.camp) + '</span></a>';
+    }).join('');
+    const camps = SECS.map(k => {
+      const S = SEC[k];
+      return '<li><a class="camp" id="camp-' + k + '" href="#' + k + '" style="--c:' + S.color + '"><span class="cf">' + CAMPFIRE + '</span><span class="cm"><b>' + esc(S.camp) + '</b><small>' + esc(S.title) + '</small></span><span class="cc" id="cc-' + k + '"></span><span class="cbar"><i id="cb-' + k + '"></i></span></a></li>';
+    }).join('');
+    const badges = BADGES.map(b => '<li class="bdg" id="bdg-' + b.key + '" style="--c:' + b.color + '"><span role="img" id="bdgi-' + b.key + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + BADGE_IC[b.icon] + '</svg></span><small>' + esc(b.label) + '</small></li>').join('');
+    const rows = SECS.map(k => '<ul class="rows" id="rows-' + k + '" role="tabpanel" aria-labelledby="ix-' + k + '" hidden>' + SEC[k].items.map(rowHTML).join('') + '</ul>').join('');
+    const tabs = SECS.map(k => '<button type="button" role="tab" class="ix" id="ix-' + k + '" data-sec="' + k + '" aria-controls="rows-' + k + '" aria-selected="false" tabindex="-1" style="--c:' + SEC[k].color + '"><span class="ixl">' + esc(SEC[k].short) + '</span><i class="ixk" aria-hidden="true"></i></button>').join('');
+    const segs = '<i class="ok" id="seg-ok"></i>' + NEED_KEYS.map(k => '<i id="seg-' + esc(k) + '" style="--c:' + NEEDS[k].color + '"></i>').join('');
+    return `
+<header class="hd" id="hd"><div class="hd-in">
+  <a class="pm" id="pm" href="#fire"${START ? '' : ' hidden'}><b id="pm-n"></b><small id="pm-d"></small></a>
+  <div class="st">
+    <div class="st-top"><span class="st-l">出發體力</span><b class="st-p" id="st-p"></b>
+      <span class="st-mini"><a class="mini" id="mini-team" href="#shared"><span>公共</span><b id="mini-team-n"></b></a><a class="mini" id="mini-me" href="#me"><span>行李</span><b id="mini-me-n"></b></a></span></div>
+    <div class="bar" id="bar" role="img">${segs}</div>
+    <div class="chips" id="chips"></div>
+  </div>
+</div></header>
+<main id="views">
+  <section class="view" id="v-trail" aria-labelledby="trail-h" hidden><div class="shell">
+    <header class="cover">
+      <p class="eyebrow">${esc(eyebrow)}</p>
+      <h1 id="trail-h">${esc(TITLE)}</h1>
+      <p class="sub">${esc(SUBTITLE)}・勾完一區就往上爬一站</p>
+      ${STICKERS.length ? '<div class="stks">' + STICKERS.map(t => '<span class="stk">' + esc(t) + '</span>').join('') + '</div>' : ''}
+    </header>
+    <div class="map-wrap" id="map-wrap"><div class="map" id="map">
+      ${MAP_ART}
+      <div class="map-t"><h2>登山路線</h2><p>勾完一區＝抵達一個營地</p></div>
+      ${nodes}
+      <div class="summit"><b>山頂・出發日</b><small id="sum-sub"></small><button type="button" class="flare-btn" id="flare-btn">預覽信號彈</button></div>
+      <div class="walker" id="walker">
+        <button type="button" class="walker-in" id="walker-btn" aria-label="寄居帳，點一下看提示">${PC('', ' id="walker-pc"')}</button>
+        <p class="bub" id="walker-bub" role="status" aria-live="polite"></p>
+      </div>
+    </div></div>
+    <ol class="camps" aria-label="營地進度">${camps}</ol>
+    <section class="sash" aria-labelledby="sash-h"><h2 id="sash-h">徽章 <span id="bdg-n">0</span> / ${BADGES.length}</h2><ul class="badges">${badges}</ul></section>
+  </div></section>
+
+  <section class="view" id="v-list" aria-labelledby="pg-title" hidden><div class="shell">
+    <div class="book" id="book">
+      <article class="page" id="page">
+        <div class="pg-head">
+          <div class="pg-tt">
+            <div class="pg-t1"><h1 id="pg-title"></h1><span class="pg-n" id="pg-n"></span></div>
+            <svg class="squig" viewBox="0 0 130 12" width="130" height="12" aria-hidden="true"><path d="M2 8C22 3 40 11 64 6s42-3 64 1" fill="none" stroke="#c8433a" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <p class="pg-cap" id="pg-cap"></p>
+            <div class="done-stamp" id="done-stamp" hidden></div>
+          </div>
+          <div class="illo" id="illo" aria-hidden="true">${SECS.map(k => ILLO[k]).join('')}</div>
+        </div>
+        <p class="pg-lead" id="pg-lead"></p>
+        ${rows}
+        <div class="pg-foot"><a class="nextpg" id="pg-next" href="#fire"></a></div>
+      </article>
+      <aside class="side">
+        <div class="idx" role="tablist" aria-label="清單分頁" aria-orientation="vertical">${tabs}</div>
+        <div class="pc-side-w"><button type="button" class="pc-side" id="pc-side" aria-label="寄居帳，點一下看這頁還缺什麼">${PC('', ' id="side-pc"')}</button><p class="bub" id="side-bub" role="status" aria-live="polite"></p></div>
+      </aside>
+    </div>
+  </div></section>
+
+  <section class="view" id="v-fire" aria-labelledby="fire-h1" hidden><div class="shell">
+    <div class="fire-h"><div><p class="eyebrow">CAMPFIRE · 營火休息站</p><h1 id="fire-h1">烤棉花糖</h1></div><span class="supply" id="supply">${IC.mallow}<span id="supply-t"></span></span></div>
+    <div class="scene" id="scene">
+      ${SCENE}
+      <span class="tagc t1" id="sc-tent-t"></span>
+      <span class="tagc t2" id="sc-fire-t"></span>
+      <button type="button" class="scene-pc" id="scene-pc-btn" aria-label="寄居帳，點一下看怎麼烤"></button>
+      <p class="bub say" id="say" role="status" aria-live="polite"></p>
+    </div>
+    <section class="roast" aria-labelledby="roast-h">
+      <div class="roast-top"><h2 id="roast-h">火候</h2><span class="tally" id="tally"></span></div>
+      <div class="heat" id="heat" role="img" aria-label="火候 0%，完美區間是 55% 到 75%"><span class="heat-ptr" id="heat-ptr"></span><div class="heat-bar"><span class="z1"></span><span class="z2"></span><span class="z3">完美</span><span class="z4"></span><span class="z5"></span></div><div class="heat-lb"><span>生</span><span>金黃</span><span>焦</span></div></div>
+      <button type="button" class="roast-btn" id="roast-btn">按住烤棉花糖</button>
+      <p class="roast-tip" id="roast-tip"></p>
+    </section>
+    <section class="cdn" aria-labelledby="cdn-h"${START ? '' : ' hidden'}><h2 id="cdn-h">營火倒數</h2><p class="cdn-line" id="cdn-line"></p><div class="week" id="week" aria-hidden="true"></div><p class="cdn-cap" id="cdn-cap"></p></section>
+  </div></section>
+
+  <section class="view" id="v-share" aria-labelledby="share-h1" hidden><div class="shell">
+    <div class="share-h"><span class="share-pc">${PC('cheer')}</span><div><h1 id="share-h1">貼到群組</h1><p>把目前的勾選狀態複製成文字，貼進 LINE 群組，大家就知道還缺什麼。</p></div></div>
+    <div class="copy-card">
+      <div class="seg" role="tablist" aria-label="選擇要複製的內容"><button type="button" role="tab" id="tab-team" aria-selected="true" aria-controls="copy-ta">公共清單</button><button type="button" role="tab" id="tab-me" aria-selected="false" aria-controls="copy-ta">我的行李</button></div>
+      <textarea id="copy-ta" readonly rows="12" aria-label="要複製的文字"></textarea>
+      <div class="copy-act"><button type="button" class="btn solid" id="copy-btn">複製文字</button><button type="button" class="btn" id="text-share" hidden>用分享選單傳送</button></div>
+    </div>
+    <section class="about" aria-labelledby="about-h">
+      <h2 id="about-h">勾選存在哪裡</h2>
+      <p>勾選只存在這台裝置的瀏覽器，每個人打開看到的都是自己的勾選。LINE 內建瀏覽器和 Safari 的紀錄是分開的，清除瀏覽資料後紀錄會消失。</p>
+      <div class="resets"><button type="button" class="btn ghost" id="reset-team">清除公共勾選</button><button type="button" class="btn ghost" id="reset-me">清除行李勾選</button><button type="button" class="btn ghost" id="reset-fire">重設營火紀錄</button></div>
+    </section>
+    <p class="foot-t">${esc(TITLE)}${META ? '｜' + META : ''}</p>
+  </div></section>
+</main>
+<nav class="tb" aria-label="主要分頁"><div class="tb-in">
+  <a href="#trail" data-v="trail">${IC.trail}<span>山路</span></a>
+  <a href="#shared" data-v="list" id="tb-list">${IC.list}<span>清單</span></a>
+  <a href="#fire" data-v="fire" id="tb-fire">${IC.fire}<span>營火</span><b class="dot" id="tb-dot" hidden></b></a>
+  <a href="#share" data-v="share">${IC.share}<span>分享</span></a>
+</div></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"><span class="t-pc">${PC('', ' id="toast-pc"')}</span><span id="toast-msg"></span></div>`;
+  }
+
+  /* ---------- 畫面更新 ---------- */
+  const ROW = {};
+  let VIEW = '', SECK = SEC[UI.sec] ? UI.sec : (SECS[firstOpen()] || 'shared');
+  let copyTab = 'team';
+  const setText = (el, v) => { if (el && el.textContent !== String(v)) el.textContent = v; };
+  const stageOf = p => (p >= 1 ? 3 : p >= 0.6 ? 2 : p >= 0.25 ? 1 : 0);
+  const pct = (a, b) => (b ? a / b : 1);
+
+  function renderCountdown() {
+    const n = daysLeft();
+    if (n === null) return;
+    const b = $('#pm-n');
+    setText(b, n > 0 ? 'D-' + n : n === 0 ? 'D-Day' : '出發了');
+    b.classList.toggle('zh', n < 0);
+    setText($('#pm-d'), (START.getMonth() + 1) + '.' + START.getDate() + (n === 0 ? ' 今天' : ' 出發'));
+    $('#pm').setAttribute('aria-label', countdownLine() + '，看營火倒數');
+    setText($('#cdn-line'), countdownLine());
+    setText($('#cdn-cap'), fireCaption());
+    setText($('#sc-fire-t'), '營火大小＝倒數 ' + (n > 0 ? 'D-' + n : n === 0 ? 'D-Day' : '已出發'));
+    const fg = $('#fire-g');
+    if (fg) fg.style.transform = 'scale(' + fireScale().toFixed(3) + ')';
+    const week = $('#week');
+    if (n >= 1 && n <= 9) {
+      const t0 = today0();
+      let h = '';
+      for (let i = 0; i <= n; i++) {
+        const d = new Date(t0.getFullYear(), t0.getMonth(), t0.getDate() + i);
+        const cls = i === 0 ? ' today' : i === n ? ' go' : '';
+        h += '<span class="day' + cls + '">' + (i === 0 ? '今天' : i === n ? '出發' : WD[d.getDay()]) + '<b>' + d.getDate() + '</b></span>';
+      }
+      if (week._h !== h) { week.innerHTML = h; week._h = h; week.style.setProperty('--n', n + 1); }
+      week.hidden = false;
+    } else week.hidden = true;
+    setText($('#sum-sub'), whenText() + '・全部勾完就能攻頂');
+  }
+
+  function renderHeader() {
+    const dt = doneTotal(), miss = missingByNeed();
+    const p = Math.round(pct(dt, TOTAL) * 100);
+    setText($('#st-p'), p + '%');
+    $('#seg-ok').style.width = (pct(dt, TOTAL) * 100).toFixed(3) + '%';
+    NEED_KEYS.forEach(k => { const el = document.getElementById('seg-' + k); if (el) el.style.width = (TOTAL ? miss[k] / TOTAL * 100 : 0).toFixed(3) + '%'; });
+    const parts = NEED_KEYS.filter(k => miss[k] > 0).map(k => NEEDS[k].label + ' ' + miss[k]);
+    $('#bar').setAttribute('aria-label', '出發體力 ' + p + '%' + (parts.length ? '，還缺 ' + parts.join('、') : '，全部備妥'));
+    const chips = $('#chips');
+    const h = parts.length
+      ? NEED_KEYS.filter(k => miss[k] > 0).map(k => '<button type="button" class="chip" data-need="' + esc(k) + '" style="--c:' + NEEDS[k].color + '" aria-label="' + esc(NEEDS[k].label) + '還缺 ' + miss[k] + ' 樣，跳到第一樣"><i></i>' + esc(NEEDS[k].label) + ' <b>' + miss[k] + '</b></button>').join('')
+      : '<span class="chip ok">全部備妥，可以出發</span>';
+    if (chips._h !== h) { chips.innerHTML = h; chips._h = h; }
+    const tD = secCount('shared') + secCount('cook'), tN = SEC.shared.items.length + SEC.cook.items.length;
+    const mD = secCount('me'), mN = SEC.me.items.length;
+    setText($('#mini-team-n'), tD + '/' + tN);
+    setText($('#mini-me-n'), mD + '/' + mN);
+    $('#mini-team').classList.toggle('full', tD >= tN);
+    $('#mini-me').classList.toggle('full', mD >= mN);
+    $('#mini-team').setAttribute('aria-label', '公共裝備和炊具已備妥 ' + tD + '/' + tN);
+    $('#mini-me').setAttribute('aria-label', '我的行李已打勾 ' + mD + '/' + mN);
+  }
+
+  function renderTrail() {
+    const open = firstOpen();
+    SECS.forEach((k, i) => {
+      const S = SEC[k], c = secCount(k), n = S.items.length, full = c >= n;
+      const node = $('#node-' + k), camp = $('#camp-' + k);
+      node.classList.toggle('lit', full);
+      node.classList.toggle('next', i === open);
+      camp.classList.toggle('lit', full);
+      setText($('#cc-' + k), c + '/' + n);
+      $('#cb-' + k).style.setProperty('--v', pct(c, n).toFixed(4));
+      camp.setAttribute('aria-label', S.camp + '，' + S.title + ' ' + c + '/' + n + (full ? '，營火已點亮' : '，進入清單'));
+    });
+    let got = 0;
+    BADGES.forEach(b => {
+      const g = badgeGot(b);
+      if (g) got++;
+      $('#bdg-' + b.key).classList.toggle('got', g);
+      $('#bdgi-' + b.key).setAttribute('aria-label', b.label + '徽章' + (g ? '，已取得' : '，還沒取得'));
+    });
+    setText($('#bdg-n'), got);
+    setText($('#flare-btn'), allDone() ? '發射信號彈' : '預覽信號彈');
+    /* 攻頂時寄居帳把自己的帳篷插在山頂，原本的旗子收起來 */
+    $('#map').classList.toggle('done', allDone());
+  }
+
+  function renderList() {
+    const S = SEC[SECK], c = secCount(SECK), n = S.items.length, p = pct(c, n), st = stageOf(p);
+    $('#page').style.setProperty('--c', S.color);
+    setText($('#pg-title'), S.title);
+    setText($('#pg-n'), c + ' / ' + n);
+    const CAP = {
+      asks: ['還沒打電話問營區', '問到一題了', '只剩最後一題', '營區都問好了'],
+      shared: ['帳篷還收在袋子裡', '營柱撐起來了', '帳篷搭好了，再加把勁', '帳篷搭好，插上旗子'],
+      cook: ['鍋子還冷冷的', '開始冒熱氣了', '熱氣越來越多', '可以開伙了'],
+      me: ['背包還空空的', '背包裝了一些', '背包快滿了', '背包裝滿了']
+    };
+    setText($('#pg-cap'), CAP[SECK][st]);
+    setText($('#pg-lead'), S.camp + '・' + S.lead);
+    const stamp = $('#done-stamp');
+    setText(stamp, S.stamp);
+    stamp.hidden = c < n;
+    SECS.forEach(k => {
+      $('#rows-' + k).hidden = k !== SECK;
+      const ix = $('#ix-' + k), on = k === SECK;
+      ix.setAttribute('aria-selected', String(on));
+      ix.tabIndex = on ? 0 : -1;
+      ix.classList.toggle('full', secFull(k));
+      ix.setAttribute('aria-label', SEC[k].title + ' ' + secCount(k) + '/' + SEC[k].items.length);
+    });
+    $$('.il', $('#illo')).forEach(el => { el.style.display = el.dataset.il === SECK ? '' : 'none'; });
+    const tent = $('.il.tent');
+    tent.setAttribute('data-st', String(stageOf(pct(secCount('shared'), SEC.shared.items.length))));
+    $('#pot-steam').style.opacity = (0.15 + pct(secCount('cook'), SEC.cook.items.length) * 0.85).toFixed(2);
+    const aN = SEC.asks.items.length, aC = secCount('asks');
+    setText($('#ph-txt'), aC >= aN ? '問好了！' : '還有 ' + (aN - aC) + ' 題');
+    $('#bag-fill').style.transform = 'translateY(' + Math.round((1 - pct(secCount('me'), SEC.me.items.length)) * 62) + 'px)';
+    const nx = SECS[S.i + 1];
+    const next = $('#pg-next');
+    next.href = nx ? '#' + nx : '#fire';
+    setText(next, nx ? '下一站：' + SEC[nx].camp + '・' + SEC[nx].title : '去營火烤棉花糖');
+    $('#tb-list').href = '#' + SECK;
+  }
+
+  function renderRows() {
+    ALL.forEach(it => {
+      const li = ROW[it.id];
+      if (!li) return;
+      const d = isDone(it);
+      li.classList.toggle('done', d);
+      const inp = li.querySelector('.ck-in');
+      if (inp.checked !== d) inp.checked = d;
+    });
+  }
+
+  function renderFire() {
+    const sp = supply(), practice = sp <= 0;
+    const sup = $('#supply');
+    sup.classList.toggle('practice', practice);
+    setText($('#supply-t'), practice ? '練習模式' : '棉花糖 ×' + sp);
+    sup.setAttribute('aria-label', practice ? '沒有棉花糖了，現在是練習模式' : '還有 ' + sp + ' 支棉花糖');
+    const sc = secCount('shared'), sn = SEC.shared.items.length;
+    $('#sc-tent').setAttribute('data-st', String(stageOf(pct(sc, sn))));
+    setText($('#sc-tent-t'), '帳篷＝公共裝備 ' + sc + '/' + sn);
+    setText($('#tally'), '完美 ' + FIRE.perfect + '・烤焦 ' + FIRE.burnt);
+    if (!ROAST.on) {
+      const btn = $('#roast-btn');
+      btn.classList.toggle('practice', practice);
+      setText(btn, practice ? '按住練習烤（不計分）' : '按住烤棉花糖');
+      btn.setAttribute('aria-label', (practice ? '按住練習烤棉花糖，不計分' : '按住烤棉花糖') + '，放開停止');
+    }
+    setText($('#roast-tip'), '按住按鈕開始烤，看指針落在「完美」時放開。每完成一個營地，營火邊就多一支棉花糖' + (practice ? '；現在沒有棉花糖，可以先練習。' : '。'));
+    const dot = $('#tb-dot');
+    dot.hidden = sp <= 0;
+    setText(dot, sp);
+    $('#tb-fire').setAttribute('aria-label', '營火' + (sp > 0 ? '，有 ' + sp + ' 支棉花糖' : ''));
+  }
+
+  function teamText() {
+    const L = ['⛺ ' + TITLE + (META ? '（' + META + '）' : '')];
+    const cd = countdownLine();
+    if (cd) L.push(cd);
+    const mark = it => (isDone(it) ? '☑ ' : '☐ ');
+    ['shared', 'cook'].forEach(k => {
+      const S = SEC[k];
+      if (!S.items.length) return;
+      L.push('', '【' + S.title + '】已備妥 ' + secCount(k) + '/' + S.items.length);
+      S.items.forEach(it => L.push(mark(it) + (it.tag ? it.tag + '：' : '') + plain(it.name) + (it.note ? '｜' + plain(it.note) : '')));
+    });
+    if (SEC.asks.items.length) {
+      L.push('', '【出發前先問營區】');
+      SEC.asks.items.forEach(it => L.push(mark(it) + plain(it.name) + (it.note ? '（' + plain(it.note) + '）' : '')));
+    }
+    return L.join('\n');
+  }
+  function meText() {
+    const S = SEC.me;
+    const L = ['🎒 個人要帶什麼（' + secCount('me') + '/' + S.items.length + '）'];
+    S.items.forEach(it => L.push((isDone(it) ? '☑ ' : '☐ ') + plain(it.name) + (it.note ? '（' + plain(it.note) + '）' : '')));
+    return L.join('\n');
+  }
+  function renderCopy() { const ta = $('#copy-ta'), v = copyTab === 'team' ? teamText() : meText(); if (ta.value !== v) ta.value = v; }
+
+  function updateAll() {
+    renderRows();
+    renderHeader();
+    renderTrail();
+    renderList();
+    renderFire();
+    renderCopy();
+  }
+
+  /* ---------- 小動畫 ---------- */
+  let toastT = 0;
+  function toast(msg, cheer) {
+    const t = $('#toast');
+    setText($('#toast-msg'), msg);
+    $('#toast-pc').classList.toggle('cheer', !!cheer);
+    t.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(() => t.classList.remove('show'), 3000);
+  }
+  function alt(el, a, b) {
+    if (!el || reduce) return;
+    const useB = el.classList.contains(a);
+    el.classList.remove(a, b);
+    el.classList.add(useB ? b : a);
+  }
+  const hop = svg => alt(svg, 'hop-a', 'hop-b');
+  function mood(svg, cls, ms) {
+    if (!svg) return;
+    svg.classList.add(cls);
+    clearTimeout(svg['_' + cls]);
+    svg['_' + cls] = setTimeout(() => svg.classList.remove(cls), ms || 1600);
+  }
+  /* 被點到：先縮回帳篷，再探頭跳出來 */
+  function peek(svg) {
+    if (!svg) return;
+    if (reduce) return;
+    mood(svg, 'oops', 450);
+    setTimeout(() => { svg.classList.remove('oops'); hop(svg); }, 460);
+  }
+  function say(el, text, ms) {
+    if (!el) return;
+    el.textContent = text;
+    el.classList.add('show');
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.classList.remove('show'), ms || 3800);
+  }
+  function flashRow(id) {
+    const li = ROW[id];
+    if (!li) return;
+    li.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+    li.classList.remove('flash');
+    void li.offsetWidth;
+    li.classList.add('flash');
+    setTimeout(() => li.classList.remove('flash'), 1900);
+  }
+  function confetti(count) {
+    if (reduce) return;
+    const cv = document.createElement('canvas');
+    cv.className = 'confetti';
+    document.body.appendChild(cv);
+    const W = innerWidth, H = innerHeight, dpr = Math.min(2, window.devicePixelRatio || 1);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    const g = cv.getContext('2d');
+    if (!g) { cv.remove(); return; }
+    g.scale(dpr, dpr);
+    const cols = ['#edbd55', '#f06a3a', '#c8433a', '#9cc2a5', '#9cbfe0', '#f0a29a', '#9b87c6'];
+    const P = Array.from({ length: count || 120 }, () => ({
+      x: W / 2 + (Math.random() - 0.5) * W * 0.4, y: H * 0.38,
+      vx: (Math.random() - 0.5) * 13, vy: -Math.random() * 13 - 5,
+      s: 6 + Math.random() * 6, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.3,
+      c: cols[Math.floor(Math.random() * cols.length)], dot: Math.random() < 0.3
+    }));
+    const t0 = performance.now(), LIFE = 2600;
+    const frame = t => {
+      const el = t - t0;
+      g.clearRect(0, 0, W, H);
+      g.globalAlpha = Math.max(0, 1 - el / LIFE);
+      for (const p of P) {
+        p.vy += 0.34; p.vx *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr;
+        g.save(); g.translate(p.x, p.y); g.rotate(p.r); g.fillStyle = p.c;
+        if (p.dot) { g.beginPath(); g.arc(0, 0, p.s / 2, 0, 6.283); g.fill(); } else g.fillRect(-p.s / 2, -p.s / 4, p.s, p.s / 2);
+        g.restore();
+      }
+      if (el < LIFE) requestAnimationFrame(frame); else cv.remove();
+    };
+    requestAnimationFrame(frame);
+  }
+  function pageFlip() {
+    if (reduce) return;
+    const f = document.createElement('div');
+    f.className = 'flip';
+    f.setAttribute('aria-hidden', 'true');
+    $('#page').appendChild(f);
+    setTimeout(() => f.remove(), 650);
+  }
+
+  /* ---------- 山路：寄居帳橫著走 ---------- */
+  const HAS_OFFSET = !!(window.CSS && CSS.supports && CSS.supports('offset-path', 'path("M0 0L1 1")'));
+  let walkF = 0, walkSx = 0, walkDur = 0, walkT = 0, introDone = false, hintI = 0;
+  function pointAt(f) {
+    for (let i = 0; i < ORDER.length - 1; i++) {
+      const a = ORDER[i], b = ORDER[i + 1];
+      if (f <= CF[b] || i === ORDER.length - 2) {
+        const t = clamp((f - CF[a]) / ((CF[b] - CF[a]) || 1), 0, 1);
+        return { x: NODE[a][0] + (NODE[b][0] - NODE[a][0]) * t, y: NODE[a][1] + (NODE[b][1] - NODE[a][1]) * t };
+      }
+    }
+    return { x: NODE.summit[0], y: NODE.summit[1] };
+  }
+  function trailTarget() {
+    const i = firstOpen();
+    if (i < 0) return { f: 1, sx: SX.summit };
+    const k = SECS[i], prev = i ? SECS[i - 1] : 'start';
+    const S = SEC[k], q = Math.min(pct(secCount(k), S.items.length), 0.9);
+    return { f: CF[prev] + (CF[k] - CF[prev]) * q, sx: Math.round(SX[prev] + (SX[k] - SX[prev]) * q) };
+  }
+  function placeWalker(f, sx, animate) {
+    const w = $('#walker'), ok = $('#tr-ok');
+    const dist = Math.abs(f - walkF) + Math.abs(sx - walkSx) / 600;
+    const dur = animate && !reduce && dist > 0.0005 ? clamp(dist * 4.5, 0.7, 2.6) : 0;
+    walkDur = dur;
+    w.style.setProperty('--wd', dur + 's');
+    ok.style.transitionDuration = dur + 's';
+    w.style.setProperty('--sx', sx + 'px');
+    if (HAS_OFFSET) w.style.offsetDistance = (f * 100).toFixed(3) + '%';
+    else { const p = pointAt(f); w.style.transform = 'translate(' + p.x.toFixed(1) + 'px,' + p.y.toFixed(1) + 'px)'; }
+    ok.style.strokeDashoffset = (100 - f * 100).toFixed(3);
+    clearTimeout(walkT);
+    if (dur > 0) { w.classList.add('walking'); walkT = setTimeout(() => w.classList.remove('walking'), dur * 1000); }
+    else w.classList.remove('walking');
+    walkF = f; walkSx = sx;
+    const x = pointAt(f).x + sx;
+    const bub = $('#walker-bub');
+    bub.classList.toggle('to-r', x < 171);
+    bub.classList.toggle('to-l', x >= 171);
+  }
+  function scaleMap() {
+    const wrap = $('#map-wrap'), map = $('#map');
+    if (!wrap || VIEW !== 'trail') return;
+    const w = wrap.clientWidth;
+    if (!w) return;
+    const s = clamp(w / 342, 0.8, 1.3);
+    map.style.transform = 'translateX(' + ((w - 342 * s) / 2).toFixed(1) + 'px) scale(' + s.toFixed(4) + ')';
+    wrap.style.height = (440 * s).toFixed(1) + 'px';
+  }
+  function trailHints() {
+    const L = [], i = firstOpen();
+    if (i < 0) L.push('全部備妥！' + (START ? md(START) + ' ' : '') + '山頂見');
+    else {
+      const S = SEC[SECS[i]], miss = S.items.filter(x => !isDone(x));
+      L.push('下一站' + S.camp + '：還差 ' + miss.length + ' 樣，先從「' + plain(miss[0].name) + '」開始');
+    }
+    const sp = supply();
+    if (sp > 0) L.push('營火邊有 ' + sp + ' 支棉花糖，記得去烤');
+    const miss = missingByNeed(), worst = NEED_KEYS.filter(k => miss[k] > 0).sort((a, b) => miss[b] - miss[a])[0];
+    if (worst) L.push('出發體力還缺「' + NEEDS[worst].label + '」' + miss[worst] + ' 樣，點上方的標籤就能找到');
+    const n = daysLeft();
+    if (n !== null && n > 0) L.push('還有 ' + n + ' 天出發，營火會越燒越旺');
+    return L;
+  }
+  function onTrailShow() {
+    scaleMap();
+    const t = trailTarget();
+    let delay = 300;
+    if (!introDone) {
+      introDone = true;
+      placeWalker(0, 0, false);
+      const go = reduce ? 0 : 550;
+      setTimeout(() => placeWalker(t.f, t.sx, true), go);
+      delay = go + (reduce ? 0 : clamp((Math.abs(t.f) + Math.abs(t.sx) / 600) * 4.5, 0.7, 2.6) * 1000) + 150;
+      if (t.f < 0.0005) delay = go + 150;
+    } else if (Math.abs(t.f - walkF) > 0.0005 || t.sx !== walkSx) {
+      placeWalker(t.f, t.sx, true);
+      delay = walkDur * 1000 + 150;
+    }
+    /* 新拿到的徽章蓋章一次 */
+    const seen = Array.isArray(UI.seen) ? UI.seen : [];
+    const nowGot = BADGES.filter(badgeGot).map(b => b.key);
+    nowGot.forEach(k => { if (seen.indexOf(k) < 0) { const el = $('#bdg-' + k); el.classList.remove('new'); void el.offsetWidth; el.classList.add('new'); } });
+    UI.seen = nowGot;
+    /* 抵達新營地、第一次見面、攻頂 */
+    const open = firstOpen(), reached = open < 0 ? SECS.length : open;
+    const prev = typeof UI.reached === 'number' ? UI.reached : 0;
+    const bub = $('#walker-bub'), pc = $('#walker-pc');
+    if (reached > prev) {
+      setTimeout(() => {
+        if (VIEW !== 'trail') return;
+        say(bub, reached >= SECS.length ? '抵達山頂！全部備妥' : '抵達' + SEC[SECS[reached - 1]].camp + '！營火點亮了', 4200);
+        mood(pc, 'cheer', 1800); hop(pc);
+      }, delay);
+    } else if (!UI.hi) {
+      setTimeout(() => { if (VIEW === 'trail') say(bub, '我是寄居帳！勾完一區，我們就橫著往上爬一站', 5200); }, delay);
+    }
+    UI.hi = 1;
+    UI.reached = reached;
+    if (allDone() && !UI.flared) { UI.flared = 1; setTimeout(() => flare(false), delay + 500); }
+    if (!allDone()) UI.flared = 0;
+    saveUI();
+  }
+  function flare(manual) {
+    const done = allDone();
+    if (manual) toast(done ? '攻頂信號彈發射！' + (START ? md(START) + ' ' : '') + '山頂見' : '這是預覽，全部勾完就能正式攻頂', done);
+    if (reduce || VIEW !== 'trail') return;
+    const map = $('#map');
+    const r = document.createElement('span');
+    r.className = 'rocket';
+    const bm = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    bm.setAttribute('class', 'boom');
+    bm.setAttribute('viewBox', '0 0 120 120');
+    bm.setAttribute('aria-hidden', 'true');
+    bm.innerHTML = '<g stroke="#ff5a3c" stroke-width="3" stroke-linecap="round"><path d="M60 10v20M60 90v20M10 60h20M90 60h20M25 25l14 14M81 81l14 14M95 25 81 39M39 81 25 95"/></g><circle cx="60" cy="60" r="16" fill="#ffd27a" stroke="#ff5a3c" stroke-width="3"/>';
+    map.appendChild(r);
+    map.appendChild(bm);
+    setTimeout(() => { r.remove(); bm.remove(); }, 1700);
+    if (done) setTimeout(() => confetti(140), 1000);
+    hop($('#walker-pc'));
+  }
+
+  /* ---------- 清單：切換分頁 ---------- */
+  let PENDING = null;
+  function setSection(k, opt) {
+    if (!SEC[k]) return;
+    opt = opt || {};
+    const changed = k !== SECK;
+    SECK = k;
+    if (UI.sec !== k) { UI.sec = k; saveUI(); }
+    if (opt.hash && location.hash !== '#' + k) { try { history.replaceState(null, '', '#' + k); } catch (e) { /* 略過 */ } }
+    if (changed && opt.flip && VIEW === 'list') pageFlip();
+    renderList();
+    if (changed && opt.scroll) {
+      const top = $('#book').getBoundingClientRect().top + window.scrollY - hdH() - 10;
+      if (window.scrollY > top) window.scrollTo(0, Math.max(0, top));
+    }
+  }
+  function focusItem(id) {
+    const it = ITEM[id];
+    if (!it) return;
+    PENDING = id;
+    if (VIEW === 'list' && SECK === it.sec) { applyPending(); return; }
+    if (location.hash === '#' + it.sec) route(); else location.hash = '#' + it.sec;
+  }
+  function applyPending() {
+    const id = PENDING;
+    PENDING = null;
+    if (id) setTimeout(() => flashRow(id), VIEW === 'list' ? 80 : 0);
+  }
+  function jumpNeed(k) {
+    const it = ALL.find(x => x.need === k && !isDone(x));
+    if (it) focusItem(it.id);
+  }
+  function sideHint() {
+    const S = SEC[SECK], miss = S.items.filter(x => !isDone(x)), bub = $('#side-bub');
+    peek($('#side-pc'));
+    if (!miss.length) { say(bub, '這頁好了！' + (SECS[S.i + 1] ? '下一站：' + SEC[SECS[S.i + 1]].title : '去營火烤棉花糖吧')); return; }
+    say(bub, '還差 ' + miss.length + ' 樣：' + plain(miss[0].name));
+    flashRow(miss[0].id);
+  }
+
+  /* ---------- 勾選 ---------- */
+  function snap() { const o = {}; SECS.forEach(k => { o[k] = secFull(k); }); o.all = allDone(); return o; }
+  function toggleItem(id, on) {
+    const it = ITEM[id];
+    if (!it) return;
+    const before = snap();
+    if (it.sec === 'me') { if (on) MINE[id] = true; else delete MINE[id]; saveMine(); }
+    else { if (on) DONE[id] = true; else delete DONE[id]; saveDone(); }
+    if (on) alt(ROW[id], 'bst-a', 'bst-b');
+    updateAll();
+    if (!on) return;
+    hop($('#side-pc'));
+    mood($('#side-pc'), 'cheer', 800);
+    alt($('#illo'), 'pop-a', 'pop-b');
+    const after = snap();
+    if (!before[it.sec] && after[it.sec]) {
+      const S = SEC[it.sec], b = BADGES.find(x => x.key === it.sec);
+      const stamp = $('#done-stamp');
+      stamp.classList.remove('in'); void stamp.offsetWidth; stamp.classList.add('in');
+      mood($('#side-pc'), 'cheer', 2000);
+      if (after.all) {
+        toast('全部備妥！到「山路」看攻頂信號彈', true);
+        confetti(170);
+      } else {
+        toast(S.camp + '完成！拿到「' + b.label + '」徽章，營火邊多一支棉花糖', true);
+        confetti(70);
+      }
+      say($('#side-bub'), S.camp + '完成！', 2600);
+    }
+  }
+
+  /* ---------- 營火：烤棉花糖 ---------- */
+  const ROAST = { on: false, heat: 0, last: 0, raf: 0, practice: false };
+  const STOPS = [[0, [255, 250, 240]], [40, [246, 223, 165]], [65, [227, 169, 90]], [85, [156, 90, 44]], [100, [43, 37, 34]]];
+  function heatColor(h) {
+    for (let i = 0; i < STOPS.length - 1; i++) {
+      const a = STOPS[i], b = STOPS[i + 1];
+      if (h <= b[0]) {
+        const t = (h - a[0]) / (b[0] - a[0]);
+        return 'rgb(' + [0, 1, 2].map(k => Math.round(a[1][k] + (b[1][k] - a[1][k]) * t)).join(',') + ')';
+      }
+    }
+    return 'rgb(43,37,34)';
+  }
+  const grade = h => (h < 20 ? 'raw' : h < 55 ? 'light' : h < 75 ? 'perfect' : h < 92 ? 'toasted' : 'burnt');
+  const RESULT = { raw: '還是生的，再多烤一下', light: '淡淡金黃，差一點點', perfect: '完美金黃！', toasted: '焦香版，也不錯吃', burnt: '烤焦了…變成黑炭' };
+  function paintHeat() {
+    const h = ROAST.heat;
+    $('#heat-ptr').style.left = h.toFixed(1) + '%';
+    $('#mallow').setAttribute('fill', heatColor(h));
+    $('#scene').classList.toggle('smoky', ROAST.on && h > 85);
+    $('#scene-pc').classList.toggle('nervous', ROAST.on && h > 80);
+  }
+  function roastTick(t) {
+    if (!ROAST.on) return;
+    const dt = Math.min(0.1, (t - ROAST.last) / 1000);
+    ROAST.last = t;
+    ROAST.heat = Math.min(100, ROAST.heat + dt * 42);
+    paintHeat();
+    if (ROAST.heat >= 100) roastStop();
+    else ROAST.raf = requestAnimationFrame(roastTick);
+  }
+  function roastStart() {
+    if (ROAST.on) return;
+    ROAST.on = true;
+    ROAST.practice = supply() <= 0;
+    ROAST.heat = 0;
+    ROAST.last = performance.now();
+    const btn = $('#roast-btn');
+    btn.classList.add('on');
+    setText(btn, '烤中…放開就停');
+    $('#scene').classList.add('roasting');
+    $('#say').classList.remove('show');
+    const pc = $('#scene-pc');
+    pc.classList.remove('oops', 'yay', 'cheer', 'nervous');
+    paintHeat();
+    ROAST.raf = requestAnimationFrame(roastTick);
+  }
+  function roastStop() {
+    if (!ROAST.on) return;
+    ROAST.on = false;
+    cancelAnimationFrame(ROAST.raf);
+    const g = grade(ROAST.heat), hadBadge = FIRE.perfect > 0;
+    if (!ROAST.practice) {
+      FIRE.used += 1;
+      if (g === 'perfect') FIRE.perfect += 1;
+      if (g === 'burnt') FIRE.burnt += 1;
+      saveFire();
+    }
+    $('#roast-btn').classList.remove('on');
+    $('#scene').classList.remove('roasting', 'smoky');
+    $('#heat').setAttribute('aria-label', '火候 ' + Math.round(ROAST.heat) + '%，完美區間是 55% 到 75%');
+    say($('#say'), (ROAST.practice ? '練習：' : '') + RESULT[g], 3600);
+    const pc = $('#scene-pc');
+    pc.classList.remove('nervous');
+    if (g === 'perfect') { mood(pc, 'yay', 1800); hop(pc); }
+    else if (g === 'burnt') mood(pc, 'oops', 1800);
+    updateAll();
+    if (!ROAST.practice && g === 'perfect' && !hadBadge) toast('拿到「烤棉花糖」徽章！', true);
+  }
+
+  /* ---------- 分頁切換 ---------- */
+  function hdH() { const h = $('#hd'); return h ? h.offsetHeight : 96; }
+  function syncHd() { document.documentElement.style.setProperty('--hd-h', hdH() + 'px'); }
+  function route() {
+    const h = decodeURIComponent(location.hash.slice(1));
+    let v = 'trail', sec = null;
+    if (SEC[h]) { v = 'list'; sec = h; }
+    else if (h === 'list') v = 'list';
+    else if (h === 'fire') v = 'fire';
+    else if (h === 'share') v = 'share';
+    const changed = v !== VIEW;
+    if (ROAST.on && v !== 'fire') roastStop();
+    VIEW = v;
+    if (sec) setSection(sec, { flip: !changed && !PENDING });
+    ['trail', 'list', 'fire', 'share'].forEach(k => { $('#v-' + k).hidden = k !== v; });
+    $$('.tb a').forEach(a => { if (a.dataset.v === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    if (changed && !PENDING) window.scrollTo(0, 0);
+    if (v === 'trail') onTrailShow();
+    if (PENDING) applyPending();
+  }
+
+  /* ---------- 互動 ---------- */
+  function setCopyTab(t) {
+    copyTab = t;
+    $('#tab-team').setAttribute('aria-selected', String(t === 'team'));
+    $('#tab-me').setAttribute('aria-selected', String(t === 'me'));
+    renderCopy();
+  }
+  async function copyText(btn) {
+    const ta = $('#copy-ta'), txt = ta.value;
+    let ok = false;
+    try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(txt); ok = true; } } catch (e) { ok = false; }
+    if (!ok) {
+      ta.focus(); ta.select();
+      try { ta.setSelectionRange(0, txt.length); ok = !!document.execCommand('copy'); } catch (e) { ok = false; }
+    }
+    if (ok) {
+      btn.textContent = '已複製';
+      setTimeout(() => { btn.textContent = '複製文字'; }, 1800);
+      toast('已複製，可以貼到 LINE 群組');
+    } else toast('已幫你選取文字，長按就能複製');
+  }
+  async function shareText() {
+    try { await navigator.share({ text: $('#copy-ta').value }); }
+    catch (e) { if (!e || e.name !== 'AbortError') toast('沒辦法開啟分享選單，改用「複製文字」'); }
+  }
+  function twoStep(btn, label, run) {
+    if (!btn._arm) {
+      btn.textContent = '再按一次確認';
+      btn._arm = setTimeout(() => { btn._arm = 0; btn.textContent = label; }, 3000);
+      return;
+    }
+    clearTimeout(btn._arm);
+    btn._arm = 0;
+    btn.textContent = label;
+    run();
+  }
+
+  document.addEventListener('change', e => {
+    const t = e.target;
+    if (t && t.classList && t.classList.contains('ck-in')) toggleItem(t.dataset.id, t.checked);
+  });
+  document.addEventListener('click', e => {
+    const el = e.target instanceof Element ? e.target : null;
+    if (!el) return;
+    const chip = el.closest('.chip[data-need]');
+    if (chip) { jumpNeed(chip.dataset.need); return; }
+    const ix = el.closest('.ix');
+    if (ix) { setSection(ix.dataset.sec, { flip: true, hash: true, scroll: true }); return; }
+    const b = el.closest('button');
+    if (!b) return;
+    switch (b.id) {
+      case 'walker-btn': { const L = trailHints(); say($('#walker-bub'), L[hintI++ % L.length], 4600); peek($('#walker-pc')); break; }
+      case 'pc-side': sideHint(); break;
+      case 'scene-pc-btn': say($('#say'), ROAST.on ? '放開就停！' : '按住下面的按鈕開始烤，指針到「完美」就放開', 3600); hop($('#scene-pc')); break;
+      case 'flare-btn': flare(true); break;
+      case 'copy-btn': copyText(b); break;
+      case 'text-share': shareText(); break;
+      case 'tab-team': setCopyTab('team'); break;
+      case 'tab-me': setCopyTab('me'); break;
+      case 'reset-team': twoStep(b, '清除公共勾選', () => { DONE = {}; saveDone(); updateAll(); toast('已清除公共裝備、炊具和營區確認的勾選'); }); break;
+      case 'reset-me': twoStep(b, '清除行李勾選', () => { MINE = {}; saveMine(); updateAll(); toast('已清除你的行李勾選'); }); break;
+      case 'reset-fire': twoStep(b, '重設營火紀錄', () => { FIRE = { used: 0, perfect: 0, burnt: 0 }; saveFire(); updateAll(); toast('營火紀錄已重設，棉花糖重新發放'); }); break;
+      default: break;
+    }
+  });
+  document.addEventListener('keydown', e => {
+    const ix = e.target instanceof Element ? e.target.closest('.ix') : null;
+    if (!ix) return;
+    const i = SECS.indexOf(ix.dataset.sec);
+    let j = -1;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') j = (i + 1) % SECS.length;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') j = (i + SECS.length - 1) % SECS.length;
+    else if (e.key === 'Home') j = 0;
+    else if (e.key === 'End') j = SECS.length - 1;
+    if (j < 0) return;
+    e.preventDefault();
+    setSection(SECS[j], { flip: true, hash: true, scroll: true });
+    $('#ix-' + SECS[j]).focus();
+  });
+
+  /* ---------- 啟動 ---------- */
+  app.innerHTML = appHTML();
+  $$('.row').forEach(li => { ROW[li.dataset.id] = li; });
+  if (navigator.share) $('#text-share').hidden = false;
+
+  const rb = $('#roast-btn');
+  rb.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    try { rb.setPointerCapture(e.pointerId); } catch (err) { /* 略過 */ }
+    roastStart();
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => rb.addEventListener(ev, roastStop));
+  rb.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); roastStart(); } });
+  rb.addEventListener('keyup', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); roastStop(); } });
+  rb.addEventListener('contextmenu', e => e.preventDefault());
+
+  try { history.scrollRestoration = 'manual'; } catch (e) { /* 略過 */ }
+  /* 舊版的分享連結（#s=…）已停用，打開時直接清掉 */
+  if (location.hash.indexOf('#s=') === 0) { try { history.replaceState(null, '', location.href.split('#')[0]); } catch (e) { /* 略過 */ } }
+
+  renderCountdown();
+  updateAll();
+  paintHeat();
+  syncHd();
+  route();
+  window.addEventListener('hashchange', route);
+  let lw = innerWidth;
+  window.addEventListener('resize', () => { syncHd(); if (innerWidth !== lw) { lw = innerWidth; scaleMap(); } });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncHd).catch(() => {});
+  /* 跨過午夜時更新倒數 */
+  setInterval(renderCountdown, 60000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') renderCountdown();
+    else if (ROAST.on) roastStop();
+  });
+})();
+</script>
+</body>
+</html>
